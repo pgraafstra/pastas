@@ -17,14 +17,16 @@
         VERSION:     '0.9',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <link rel="top" title="PASTAS 0.9 documentation" href="index.html" /> 
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
   </head>
   <body role="document">
 <div class="header">
@@ -82,12 +84,24 @@
 <li><a class="reference internal" href="#">pastas.recharge package</a><ul>
 <li><a class="reference internal" href="#submodules">Submodules</a></li>
 <li><a class="reference internal" href="#pastas-recharge-cythonize-module">pastas.recharge.cythonize module</a></li>
-<li><a class="reference internal" href="#module-pastas.recharge.recharge">pastas.recharge.recharge module</a></li>
-<li><a class="reference internal" href="#id1">pastas.recharge.recharge module</a></li>
+<li><a class="reference internal" href="#module-pastas.recharge.recharge">pastas.recharge.recharge module</a><ul>
+<li><a class="reference internal" href="#three-models-can-be-used">Three models can be used:</a></li>
+<li><a class="reference internal" href="#numerical-info">Numerical info:</a></li>
+<li><a class="reference internal" href="#to-do">To Do:</a></li>
+<li><a class="reference internal" href="#references">References:</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id1">pastas.recharge.recharge module</a><ul>
+<li><a class="reference internal" href="#id2">Three models can be used:</a></li>
+<li><a class="reference internal" href="#id3">Numerical info:</a></li>
+<li><a class="reference internal" href="#id4">To Do:</a></li>
+<li><a class="reference internal" href="#id5">References:</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#module-pastas.recharge.recharge_func">pastas.recharge.recharge_func module</a><ul>
 <li><a class="reference internal" href="#attributes">Attributes</a></li>
 <li><a class="reference internal" href="#functions">Functions</a></li>
-<li><a class="reference internal" href="#references">References</a></li>
+<li><a class="reference internal" href="#id6">References</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#module-pastas.recharge">Module contents</a></li>
@@ -98,7 +112,7 @@
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="_sources/pastas.recharge.txt"
+      <li><a href="_sources/pastas.recharge.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
@@ -132,6 +146,54 @@
 </div>
 <div class="section" id="module-pastas.recharge.recharge">
 <span id="pastas-recharge-recharge-module"></span><h2>pastas.recharge.recharge module<a class="headerlink" href="#module-pastas.recharge.recharge" title="Permalink to this headline">¶</a></h2>
+<p>This python script can be used to solve the differential equations that are used
+for the root zone module. The output of the function is the soil state (how
+saturated it is) at each timestep, and the groundwater recharge N.</p>
+<p>A .pyx-file is available of this script that can be cythonized and compiled, increasing
+computation speeds up to 35 times. The use of this compiled version is strongly
+recommended. Take a look at cythonize.py for compilation instructions.</p>
+<div class="section" id="three-models-can-be-used">
+<h3>Three models can be used:<a class="headerlink" href="#three-models-can-be-used" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Percolation Flow:</li>
+</ul>
+<p>dS/dt = Pe[t] - Kp * (Sr/Srmax)**Gamma - Epu * min(1, Sr/0.5Srmax)</p>
+<ul class="simple">
+<li>Preferential Flow:</li>
+</ul>
+<p>dS/ Dt = Pe[t] * (1 - (Sr[t] / Srmax)**Beta)- Epu * min(1, Sr/0.5Srmax)</p>
+<ul class="simple">
+<li>Combination:</li>
+</ul>
+<dl class="docutils">
+<dt>dS/ Dt = Pe[t] * (1 - (Sr[t] / Srmax)**Beta) - Kp * (Sr/Srmax)**Gamma - Epu</dt>
+<dd><ul class="first last simple">
+<li>min(1, Sr/0.5*Srmax)</li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="numerical-info">
+<h3>Numerical info:<a class="headerlink" href="#numerical-info" title="Permalink to this headline">¶</a></h3>
+<p>The soil module can be solved with an implicit or explicit euler scheme. Newton
+Raphson iteration is used as the root finder, but it is switched to a bisection
+method if this fails. The initial estimate for the the NR-iteration is provided
+by an Explicit Euler solution of the above differential equation.</p>
+</div>
+<div class="section" id="to-do">
+<h3>To Do:<a class="headerlink" href="#to-do" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Built in more external / internal checks for water balance</li>
+</ul>
+</div>
+<div class="section" id="references">
+<h3>References:<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>R.A. Collenteur [2016] Non-linear time series analysis of deep groundwater</li>
+</ul>
+<p>levels: Application to the Veluwe. MSc. thesis, TU Delft.
+<a class="reference external" href="http://repository.tudelft.nl/view/ir/uuid:baf4fc8c-6311-407c-b01f-c80a96ecd584/">http://repository.tudelft.nl/view/ir/uuid:baf4fc8c-6311-407c-b01f-c80a96ecd584/</a></p>
+<p>&#64;author: Raoul Collenteur</p>
 <dl class="function">
 <dt id="pastas.recharge.recharge.comb">
 <code class="descclassname">pastas.recharge.recharge.</code><code class="descname">comb</code><span class="sig-paren">(</span><em>t</em>, <em>P</em>, <em>E</em>, <em>Srmax=0.1</em>, <em>Kp=0.03</em>, <em>Beta=2.0</em>, <em>Gamma=2.0</em>, <em>Imax=0.001</em>, <em>dt=1.0</em>, <em>solver=1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/recharge/recharge.html#comb"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.recharge.recharge.comb" title="Permalink to this definition">¶</a></dt>
@@ -145,12 +207,63 @@
 <dl class="function">
 <dt id="pastas.recharge.recharge.pref">
 <code class="descclassname">pastas.recharge.recharge.</code><code class="descname">pref</code><span class="sig-paren">(</span><em>t</em>, <em>P</em>, <em>E</em>, <em>Srmax=0.1</em>, <em>Beta=2.0</em>, <em>Imax=0.001</em>, <em>dt=1.0</em>, <em>solver=1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/recharge/recharge.html#pref"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.recharge.recharge.pref" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>In this section the preferential flow model is defined.
+dS/ Dt = Pe[t] * (1 - (Sr[t] / Srmax)**Beta)- Epu * min(1, Sr/0.5Srmax)</p>
+</dd></dl>
 
+</div>
 </div>
 <div class="section" id="id1">
 <h2>pastas.recharge.recharge module<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="module-pastas.recharge.recharge"></span><dl class="function">
+<span class="target" id="module-pastas.recharge.recharge"></span><p>This python script can be used to solve the differential equations that are used
+for the root zone module. The output of the function is the soil state (how
+saturated it is) at each timestep, and the groundwater recharge N.</p>
+<p>A .pyx-file is available of this script that can be cythonized and compiled, increasing
+computation speeds up to 35 times. The use of this compiled version is strongly
+recommended. Take a look at cythonize.py for compilation instructions.</p>
+<div class="section" id="id2">
+<h3>Three models can be used:<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Percolation Flow:</li>
+</ul>
+<p>dS/dt = Pe[t] - Kp * (Sr/Srmax)**Gamma - Epu * min(1, Sr/0.5Srmax)</p>
+<ul class="simple">
+<li>Preferential Flow:</li>
+</ul>
+<p>dS/ Dt = Pe[t] * (1 - (Sr[t] / Srmax)**Beta)- Epu * min(1, Sr/0.5Srmax)</p>
+<ul class="simple">
+<li>Combination:</li>
+</ul>
+<dl class="docutils">
+<dt>dS/ Dt = Pe[t] * (1 - (Sr[t] / Srmax)**Beta) - Kp * (Sr/Srmax)**Gamma - Epu</dt>
+<dd><ul class="first last simple">
+<li>min(1, Sr/0.5*Srmax)</li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="id3">
+<h3>Numerical info:<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>The soil module can be solved with an implicit or explicit euler scheme. Newton
+Raphson iteration is used as the root finder, but it is switched to a bisection
+method if this fails. The initial estimate for the the NR-iteration is provided
+by an Explicit Euler solution of the above differential equation.</p>
+</div>
+<div class="section" id="id4">
+<h3>To Do:<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Built in more external / internal checks for water balance</li>
+</ul>
+</div>
+<div class="section" id="id5">
+<h3>References:<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>R.A. Collenteur [2016] Non-linear time series analysis of deep groundwater</li>
+</ul>
+<p>levels: Application to the Veluwe. MSc. thesis, TU Delft.
+<a class="reference external" href="http://repository.tudelft.nl/view/ir/uuid:baf4fc8c-6311-407c-b01f-c80a96ecd584/">http://repository.tudelft.nl/view/ir/uuid:baf4fc8c-6311-407c-b01f-c80a96ecd584/</a></p>
+<p>&#64;author: Raoul Collenteur</p>
+<dl class="function">
 <dt>
 <code class="descclassname">pastas.recharge.recharge.</code><code class="descname">comb</code><span class="sig-paren">(</span><em>t</em>, <em>P</em>, <em>E</em>, <em>Srmax=0.1</em>, <em>Kp=0.03</em>, <em>Beta=2.0</em>, <em>Gamma=2.0</em>, <em>Imax=0.001</em>, <em>dt=1.0</em>, <em>solver=1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/recharge/recharge.html#comb"><span class="viewcode-link">[source]</span></a></dt>
 <dd></dd></dl>
@@ -163,8 +276,11 @@
 <dl class="function">
 <dt>
 <code class="descclassname">pastas.recharge.recharge.</code><code class="descname">pref</code><span class="sig-paren">(</span><em>t</em>, <em>P</em>, <em>E</em>, <em>Srmax=0.1</em>, <em>Beta=2.0</em>, <em>Imax=0.001</em>, <em>dt=1.0</em>, <em>solver=1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/recharge/recharge.html#pref"><span class="viewcode-link">[source]</span></a></dt>
-<dd></dd></dl>
+<dd><p>In this section the preferential flow model is defined.
+dS/ Dt = Pe[t] * (1 - (Sr[t] / Srmax)**Beta)- Epu * min(1, Sr/0.5Srmax)</p>
+</dd></dl>
 
+</div>
 </div>
 <div class="section" id="module-pastas.recharge.recharge_func">
 <span id="pastas-recharge-recharge-func-module"></span><h2>pastas.recharge.recharge_func module<a class="headerlink" href="#module-pastas.recharge.recharge_func" title="Permalink to this headline">¶</a></h2>
@@ -191,8 +307,8 @@ name is used as a prefix. This function is called by a Tseries object.</dd>
 <dd>A function that returns an array of the simulated recharge series.</dd>
 </dl>
 </div>
-<div class="section" id="references">
-<h3>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id6">
+<h3>References<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <p>[1] R.A. Collenteur [2016] Non-linear time series analysis of deep groundwater
 levels: Application to the Veluwe. MSc. thesis, TU Delft.
 <a class="reference external" href="http://repository.tudelft.nl/view/ir/uuid:baf4fc8c-6311-407c-b01f-c80a96ecd584/">http://repository.tudelft.nl/view/ir/uuid:baf4fc8c-6311-407c-b01f-c80a96ecd584/</a></p>
@@ -310,7 +426,7 @@ dS / dt = Pe * (1 - (Sr / Srmax)**Beta)- Epu * min(1, Sr / (0.5 * Srmax))</p>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2017, M. Bakker, R.A. Collenteur, R. Calje, F. Schaars.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.6.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.5.
     </div>
   </body>
 </html>

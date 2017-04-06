@@ -17,14 +17,16 @@
         VERSION:     '0.9',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <link rel="top" title="PASTAS 0.9 documentation" href="index.html" /> 
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
   </head>
   <body role="document">
 <div class="header">
@@ -80,7 +82,7 @@
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="_sources/modules.txt"
+      <li><a href="_sources/modules.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
@@ -112,10 +114,10 @@
 <li class="toctree-l2"><a class="reference internal" href="pastas.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="pastas.read.html">pastas.read package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="pastas.read.html#submodules">Submodules</a></li>
-<li class="toctree-l4"><a class="reference internal" href="pastas.read.html#module-pastas.read.dinodata">pastas.read.dinodata module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="pastas.read.html#module-pastas.read.knmidata">pastas.read.knmidata module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="pastas.read.html#module-pastas.read.menydata">pastas.read.menydata module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="pastas.read.html#module-pastas.read.read_series">pastas.read.read_series module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pastas.read.html#module-pastas.read.datamodel">pastas.read.datamodel module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pastas.read.html#module-pastas.read.dinoloket">pastas.read.dinoloket module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pastas.read.html#module-pastas.read.knmi">pastas.read.knmi module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pastas.read.html#module-pastas.read.menyanthes">pastas.read.menyanthes module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pastas.read.html#module-pastas.read">Module contents</a></li>
 </ul>
 </li>
@@ -133,14 +135,15 @@
 <li class="toctree-l2"><a class="reference internal" href="pastas.html#submodules">Submodules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pastas.html#module-pastas.checks">pastas.checks module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pastas.html#module-pastas.model">pastas.model module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pastas.html#module-pastas.rfunc">pastas.rfunc module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pastas.html#module-pastas.solver">pastas.solver module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pastas.html#module-pastas.stats">pastas.stats module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pastas.html#module-pastas.plots">pastas.plots module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="pastas.html#usage">Usage</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pastas.html#todo">TODO</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="pastas.html#module-pastas.rfunc">pastas.rfunc module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pastas.html#module-pastas.solver">pastas.solver module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pastas.html#module-pastas.stats">pastas.stats module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pastas.html#module-pastas.tseries">pastas.tseries module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pastas.html#module-pastas.version">pastas.version module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pastas.html#module-pastas">Module contents</a></li>
 </ul>
 </li>
@@ -174,7 +177,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2017, M. Bakker, R.A. Collenteur, R. Calje, F. Schaars.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.6.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.5.
     </div>
   </body>
 </html>

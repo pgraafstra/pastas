@@ -17,14 +17,16 @@
         VERSION:     '0.9',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <link rel="top" title="PASTAS 0.9 documentation" href="#" /> 
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
   </head>
   <body role="document">
 <div class="header">
@@ -81,6 +83,8 @@
   <ul>
 <li><a class="reference internal" href="#">Introductie</a><ul>
 <li><a class="reference internal" href="#pastas-what-is-it">Pastas: What is it?</a></li>
+<li><a class="reference internal" href="#general-outline">General Outline</a></li>
+<li><a class="reference internal" href="#stress-series">Stress-series</a></li>
 <li><a class="reference internal" href="#examples">Examples</a></li>
 <li><a class="reference internal" href="#quick-installation-guide">Quick installation guide</a><ul>
 <li><a class="reference internal" href="#stable-version">Stable version</a></li>
@@ -97,7 +101,7 @@
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="_sources/index.txt"
+      <li><a href="_sources/index.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
@@ -131,11 +135,27 @@ quick implementation of new model components. Time series models can be created,
 calibrated, and analysed with just a few lines of python code with the built-in
 optimization, visualisation, and statistical analysis tools.</p>
 </div>
+<div class="section" id="general-outline">
+<h2>General Outline<a class="headerlink" href="#general-outline" title="Permalink to this headline">¶</a></h2>
+<p>A time-series model consists of stresses, called Tseries, which together with a Constant and an optional NoiseModel form the simulation.
+Most Tseries use a response-function, called rfunc, that transform the stress in its contribution in the simulation.
+Examples of response-functions are Gamma, Exponential or One (which is used for the Constant).
+Each Tseries has a number of parameters, which are optimized by the Solver.
+During optimization the residuals (the difference from the observations, or the innovations when a NoiseModel is used) are minimized.</p>
+</div>
+<div class="section" id="stress-series">
+<h2>Stress-series<a class="headerlink" href="#stress-series" title="Permalink to this headline">¶</a></h2>
+<p>Most Tseries-classes use one or more stress-series.
+These series have to be equidistant (at the moment) and have to have the same frequency as the other stress-series (the observation-series can be non-equidistant and of different frequency).
+The user can use Pandas resample-methods to make sure the Series satisfy these conditions, before using the Series for Pastas.
+Each TimeStamp in the series represents the end of the period that that record describes.
+For example, the precipitation of January 1st, has the TimeStamp of January 2nd 0:00 (this can be counter-intuitive).</p>
+</div>
 <div class="section" id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
-<p>All examples are provided in the <a class="reference external" href="https://github.com/pastas/pastas/tree/master/examples">Examples directory</a>.
-These include Python scripts and Ipython Notebooks. HTML versions of the IPython
-notebooks can be found on the documentation website.</p>
+<p>Examples can be found on the <a class="reference external" href="http://pastas.github.io/pastas/examples.html">examples directory on the documentation website</a>.
+All examples are provided in the <a class="reference external" href="https://github.com/pastas/pastas/tree/master/examples">examples directory on GitHub</a>.
+These include Python scripts and Jupyter Notebooks.</p>
 </div>
 <div class="section" id="quick-installation-guide">
 <h2>Quick installation guide<a class="headerlink" href="#quick-installation-guide" title="Permalink to this headline">¶</a></h2>
@@ -212,7 +232,7 @@ on the documentation website for more information on how to develop Pastas.</p>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2017, M. Bakker, R.A. Collenteur, R. Calje, F. Schaars.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.6.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.5.
     </div>
   </body>
 </html>

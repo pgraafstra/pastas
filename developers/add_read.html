@@ -1,0 +1,162 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Adding read methods &#8212; PASTAS 0.9 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.9',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+  </head>
+  <body role="document">
+<div class="header">
+<a href="../index.html"><img src="../_static/logo.png" border="0" alt="PASTAS Logo"
+    height="100px"></a>
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../index.html">Home</a>|&nbsp;</li>
+        <li><a href="../examples.html">Examples</a>|&nbsp;</li>
+        <li><a href="../content.html">Documentation </a> |&nbsp;</li>
+        <li><a href="../developers.html">Developers </a> |&nbsp;</li>
+        <li><a href="../search.html">Search</a>|&nbsp;</li>
+ 
+      </ul>
+    </div>
+
+<div class="sidebar">
+      <div class="sphinxsidebar">
+          <div class="sphinxsidebarwrapper">
+              <h3><a href="#">Project Info</a></h3>
+              <a href="https://travis-ci.org/pastas/pastas"><img
+        src="https://travis-ci.org/pastas/pastas.svg?branch=master" border="0"
+        alt="Travis Status">
+              </a><br>
+              <a href="https://pypi.python.org/pypi/pastas"><img
+        src="https://img.shields.io/pypi/v/pastas.svg" border="0"
+        alt="Pypi Version">
+              </a><br>
+              <a href="https://mit-license.org/"><img
+        src="https://img.shields.io/pypi/l/pastas.svg" border="0"
+        alt="License">
+              </a><br>
+              <a href="https://github.com/pastas/pastas"><img
+        src="https://img.shields.io/github/release/qubyte/pastas.svg" border="0"
+        alt="Travis Status">
+              </a>
+
+
+          </div>
+      </div>
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Adding read methods</a><ul>
+<li><a class="reference internal" href="#steps-to-be-taken">Steps to be taken:</a></li>
+</ul>
+</li>
+</ul>
+
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/developers/add_read.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+</div>
+
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="adding-read-methods">
+<h1>Adding read methods<a class="headerlink" href="#adding-read-methods" title="Permalink to this headline">¶</a></h1>
+<p>In this section it is described what steps need to be taken to add a &#8220;read&#8221;
+method to pastas. The way this subpackage is structured allows for the
+easy
+implementation of your own read methods.</p>
+<div class="section" id="steps-to-be-taken">
+<h2>Steps to be taken:<a class="headerlink" href="#steps-to-be-taken" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Add your python script (E.g. read_new.py) that contains a function or class to read the data (E.g. MyReader).</li>
+<li>Make a new class (E.g. mydata) that inherits from DataModel class and parses all available attributes as provided in the DataModel.</li>
+<li>Add the correct import statement to the __init__.py in the read folder.</li>
+</ol>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../index.html">Home</a>|&nbsp;</li>
+        <li><a href="../examples.html">Examples</a>|&nbsp;</li>
+        <li><a href="../content.html">Documentation </a> |&nbsp;</li>
+        <li><a href="../developers.html">Developers </a> |&nbsp;</li>
+        <li><a href="../search.html">Search</a>|&nbsp;</li>
+ 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, M. Bakker, R.A. Collenteur, R. Calje, F. Schaars.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.5.
+    </div>
+  </body>
+</html>

@@ -17,14 +17,16 @@
         VERSION:     '0.9',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <link rel="top" title="PASTAS 0.9 documentation" href="index.html" /> 
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
   </head>
   <body role="document">
 <div class="header">
@@ -84,14 +86,15 @@
 <li><a class="reference internal" href="#submodules">Submodules</a></li>
 <li><a class="reference internal" href="#module-pastas.checks">pastas.checks module</a></li>
 <li><a class="reference internal" href="#module-pastas.model">pastas.model module</a></li>
-<li><a class="reference internal" href="#module-pastas.rfunc">pastas.rfunc module</a></li>
-<li><a class="reference internal" href="#module-pastas.solver">pastas.solver module</a></li>
-<li><a class="reference internal" href="#module-pastas.stats">pastas.stats module</a><ul>
+<li><a class="reference internal" href="#module-pastas.plots">pastas.plots module</a><ul>
 <li><a class="reference internal" href="#usage">Usage</a></li>
-<li><a class="reference internal" href="#todo">TODO</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#module-pastas.rfunc">pastas.rfunc module</a></li>
+<li><a class="reference internal" href="#module-pastas.solver">pastas.solver module</a></li>
+<li><a class="reference internal" href="#module-pastas.stats">pastas.stats module</a></li>
 <li><a class="reference internal" href="#module-pastas.tseries">pastas.tseries module</a></li>
+<li><a class="reference internal" href="#module-pastas.version">pastas.version module</a></li>
 <li><a class="reference internal" href="#module-pastas">Module contents</a></li>
 </ul>
 </li>
@@ -100,7 +103,7 @@
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="_sources/pastas.txt"
+      <li><a href="_sources/pastas.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
@@ -132,22 +135,34 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="pastas.read.html">pastas.read package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="pastas.read.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pastas.read.html#module-pastas.read.dinodata">pastas.read.dinodata module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pastas.read.html#module-pastas.read.knmidata">pastas.read.knmidata module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pastas.read.html#module-pastas.read.menydata">pastas.read.menydata module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pastas.read.html#module-pastas.read.read_series">pastas.read.read_series module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pastas.read.html#module-pastas.read.datamodel">pastas.read.datamodel module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pastas.read.html#module-pastas.read.dinoloket">pastas.read.dinoloket module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pastas.read.html#module-pastas.read.knmi">pastas.read.knmi module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pastas.read.html#module-pastas.read.menyanthes">pastas.read.menyanthes module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pastas.read.html#module-pastas.read">Module contents</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="pastas.recharge.html">pastas.recharge package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="pastas.recharge.html#submodules">Submodules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pastas.recharge.html#pastas-recharge-cythonize-module">pastas.recharge.cythonize module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pastas.recharge.html#module-pastas.recharge.recharge">pastas.recharge.recharge module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pastas.recharge.html#id1">pastas.recharge.recharge module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pastas.recharge.html#module-pastas.recharge.recharge">pastas.recharge.recharge module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pastas.recharge.html#three-models-can-be-used">Three models can be used:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pastas.recharge.html#numerical-info">Numerical info:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pastas.recharge.html#to-do">To Do:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pastas.recharge.html#references">References:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pastas.recharge.html#id1">pastas.recharge.recharge module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pastas.recharge.html#id2">Three models can be used:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pastas.recharge.html#id3">Numerical info:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pastas.recharge.html#id4">To Do:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pastas.recharge.html#id5">References:</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="pastas.recharge.html#module-pastas.recharge.recharge_func">pastas.recharge.recharge_func module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="pastas.recharge.html#attributes">Attributes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pastas.recharge.html#functions">Functions</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pastas.recharge.html#references">References</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pastas.recharge.html#id6">References</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="pastas.recharge.html#module-pastas.recharge">Module contents</a></li>
@@ -161,13 +176,10 @@
 </div>
 <div class="section" id="module-pastas.checks">
 <span id="pastas-checks-module"></span><h2>pastas.checks module<a class="headerlink" href="#module-pastas.checks" title="Permalink to this headline">¶</a></h2>
-<dl class="docutils">
-<dt>checks module</dt>
-<dd>This module is used to check the time series.</dd>
-</dl>
+<p>This module is used to check the time series.</p>
 <dl class="function">
 <dt id="pastas.checks.check_oseries">
-<code class="descclassname">pastas.checks.</code><code class="descname">check_oseries</code><span class="sig-paren">(</span><em>oseries</em>, <em>freq</em>, <em>fillnan='drop'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/checks.html#check_oseries"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.checks.check_oseries" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">pastas.checks.</code><code class="descname">check_oseries</code><span class="sig-paren">(</span><em>oseries</em>, <em>fillnan='drop'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/checks.html#check_oseries"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.checks.check_oseries" title="Permalink to this definition">¶</a></dt>
 <dd><p>Check the observed time series before running a simulation.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -176,12 +188,6 @@
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>oseries: pd.Series</strong></p>
 <blockquote>
 <div><p>Pandas series object containing the observed time series.</p>
-</div></blockquote>
-<p><strong>freq: optional[str]</strong></p>
-<blockquote>
-<div><p>String containing the desired frequency. The required string format is found
-at <a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/timeseries.html#offset">http://pandas.pydata.org/pandas-docs/stable/timeseries.html#offset</a>
--aliases</p>
 </div></blockquote>
 <p><strong>fillnan: optional[str or float]</strong></p>
 <blockquote>
@@ -248,7 +254,7 @@ interpolation.</p>
 <span id="pastas-model-module"></span><h2>pastas.model module<a class="headerlink" href="#module-pastas.model" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="pastas.model.Model">
-<em class="property">class </em><code class="descclassname">pastas.model.</code><code class="descname">Model</code><span class="sig-paren">(</span><em>oseries</em>, <em>xy=(0</em>, <em>0)</em>, <em>metadata=None</em>, <em>freq=None</em>, <em>warmup=1500</em>, <em>fillnan='drop'</em>, <em>constant=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/model.html#Model"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.model.Model" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">pastas.model.</code><code class="descname">Model</code><span class="sig-paren">(</span><em>oseries</em>, <em>xy=(0</em>, <em>0)</em>, <em>name='PASTAS_Model'</em>, <em>metadata=None</em>, <em>warmup=0</em>, <em>fillnan='drop'</em>, <em>constant=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/model.html#Model"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.model.Model" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
 <p class="rubric">Methods</p>
 <dl class="method">
@@ -266,18 +272,55 @@ interpolation.</p>
 <dl class="method">
 <dt id="pastas.model.Model.add_tseries">
 <code class="descname">add_tseries</code><span class="sig-paren">(</span><em>tseries</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/model.html#Model.add_tseries"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.model.Model.add_tseries" title="Permalink to this definition">¶</a></dt>
-<dd><p>adds a time series model component to the Model.</p>
+<dd><p>Adds a time series component to the model.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>name: str</strong></p>
+<blockquote class="last">
+<div><p>string with the name of the tseries object.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>To obtain a list of the tseries names type:
+&gt;&gt;&gt; ml.tseriesdict.keys()</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="pastas.model.Model.check_frequency">
-<code class="descname">check_frequency</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/model.html#Model.check_frequency"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.model.Model.check_frequency" title="Permalink to this definition">¶</a></dt>
-<dd><p>Methods to check if the frequency is:</p>
-<ol class="arabic simple">
-<li>The frequency should be the same for all tseries</li>
-<li>tseries timestamps should match (e.g. similar hours)</li>
-<li>freq of the tseries is lower than the max tdelta of the oseries</li>
-</ol>
+<dt id="pastas.model.Model.del_constant">
+<code class="descname">del_constant</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/model.html#Model.del_constant"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.model.Model.del_constant" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save deletion of the constant from a Model.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pastas.model.Model.del_noisemodel">
+<code class="descname">del_noisemodel</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/model.html#Model.del_noisemodel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.model.Model.del_noisemodel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save deletion of the noisemodel from the Model.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pastas.model.Model.del_tseries">
+<code class="descname">del_tseries</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/model.html#Model.del_tseries"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.model.Model.del_tseries" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save deletion of a tseries from the tseriesdict.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>name: str</strong></p>
+<blockquote class="last">
+<div><p>string with the name of the tseries object.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>To obtain a list of the tseries names type:
+&gt;&gt;&gt; ml.tseriesdict.keys()</p>
 </dd></dl>
 
 <dl class="method">
@@ -287,12 +330,97 @@ interpolation.</p>
 
 <dl class="method">
 <dt id="pastas.model.Model.get_contribution">
-<code class="descname">get_contribution</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/model.html#Model.get_contribution"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.model.Model.get_contribution" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_contribution</code><span class="sig-paren">(</span><em>name</em>, <em>tindex=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/model.html#Model.get_contribution"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.model.Model.get_contribution" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="pastas.model.Model.get_dt">
 <code class="descname">get_dt</code><span class="sig-paren">(</span><em>freq</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/model.html#Model.get_dt"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.model.Model.get_dt" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pastas.model.Model.get_freqstr">
+<code class="descname">get_freqstr</code><span class="sig-paren">(</span><em>freqstr</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/model.html#Model.get_freqstr"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.model.Model.get_freqstr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method to untangle the frequency string.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>freqstr: str</strong></p>
+<blockquote>
+<div><p>string with the frequency as defined by the pandas package,
+possibly containing a numerical value.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">num: int</p>
+<blockquote>
+<div><p>integer by which to multiply the frequency. 1 is returned if no
+num is present in the string that has been provided.</p>
+</div></blockquote>
+<p>freq: str</p>
+<blockquote class="last">
+<div><p>String with the frequency as defined by the pandas package.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pastas.model.Model.get_h_observed">
+<code class="descname">get_h_observed</code><span class="sig-paren">(</span><em>tmin</em>, <em>tmax</em>, <em>sim_index</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/model.html#Model.get_h_observed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.model.Model.get_h_observed" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pastas.model.Model.get_init_parameters">
+<code class="descname">get_init_parameters</code><span class="sig-paren">(</span><em>noise=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/model.html#Model.get_init_parameters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.model.Model.get_init_parameters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method to get all initial parameters from the individual objects.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>noise: Boolean</strong></p>
+<blockquote>
+<div><p>Add the parameters for the noisemodel to the parameters
+Dataframe or not.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">parameters: pd.DataFrame</p>
+<blockquote class="last">
+<div><p>Pandas Dataframe with the parameters.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pastas.model.Model.get_parameters">
+<code class="descname">get_parameters</code><span class="sig-paren">(</span><em>name=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/model.html#Model.get_parameters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.model.Model.get_parameters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Helper method to obtain the parameters needed for calculation if
+none are provided. This method is used by the simulation, residuals
+and the innovations methods.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">p: list</p>
+<blockquote class="last">
+<div><p>Array of the parameters used in the time series model.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pastas.model.Model.get_step_response">
+<code class="descname">get_step_response</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/model.html#Model.get_step_response"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.model.Model.get_step_response" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -306,79 +434,85 @@ interpolation.</p>
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="pastas.model.Model.initialize">
-<code class="descname">initialize</code><span class="sig-paren">(</span><em>initial=True</em>, <em>noise=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/model.html#Model.initialize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.model.Model.initialize" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="pastas.model.Model.plot">
-<code class="descname">plot</code><span class="sig-paren">(</span><em>tmin=None</em>, <em>tmax=None</em>, <em>oseries=True</em>, <em>simulate=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/model.html#Model.plot"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.model.Model.plot" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>oseries: Boolean</strong></p>
-<blockquote>
-<div><p>True to plot the observed time series.</p>
-</div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Plot of the simulated and optionally the observed time series</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="pastas.model.Model.plot_decomposition">
-<code class="descname">plot_decomposition</code><span class="sig-paren">(</span><em>tmin=None</em>, <em>tmax=None</em>, <em>freq=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/model.html#Model.plot_decomposition"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.model.Model.plot_decomposition" title="Permalink to this definition">¶</a></dt>
-<dd><p>Plot the decomposition of a time-series in the different stresses</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="pastas.model.Model.plot_results">
-<code class="descname">plot_results</code><span class="sig-paren">(</span><em>tmin=None</em>, <em>tmax=None</em>, <em>savefig=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/model.html#Model.plot_results"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.model.Model.plot_results" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>tmin/tmax: str</strong></p>
-<blockquote>
-<div><p>start and end time for plotting</p>
-</div></blockquote>
-<p><strong>savefig: Optional[Boolean]</strong></p>
-<blockquote class="last">
-<div><p>True to save the figure, False is default. Figure is saved in the
-current working directory when running your python scripts.</p>
-</div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="pastas.model.Model.residuals">
-<code class="descname">residuals</code><span class="sig-paren">(</span><em>parameters=None</em>, <em>tmin=None</em>, <em>tmax=None</em>, <em>freq='D'</em>, <em>noise=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/model.html#Model.residuals"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.model.Model.residuals" title="Permalink to this definition">¶</a></dt>
-<dd><p>Method to calculate the residuals.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="pastas.model.Model.set_tmin_tmax">
-<code class="descname">set_tmin_tmax</code><span class="sig-paren">(</span><em>tmin=None</em>, <em>tmax=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/model.html#Model.set_tmin_tmax"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.model.Model.set_tmin_tmax" title="Permalink to this definition">¶</a></dt>
-<dd><p>Function to check if the dependent and independent time series match.</p>
-<ul class="simple">
-<li>tmin and tmax are in oseries.index for optimization.</li>
-<li>all the stresses are available for simulation between tmin and tmax.</li>
-<li></li>
-</ul>
+<dt id="pastas.model.Model.get_tmin_tmax">
+<code class="descname">get_tmin_tmax</code><span class="sig-paren">(</span><em>tmin=None</em>, <em>tmax=None</em>, <em>freq=None</em>, <em>use_oseries=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/model.html#Model.get_tmin_tmax"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.model.Model.get_tmin_tmax" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method that checks and returns valid values for tmin and tmax.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>tmin</strong></p>
-<p class="last"><strong>tmax</strong></p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>tmin: str</strong></p>
+<blockquote>
+<div><p>string with a year or date that can be turned into a pandas
+Timestamp (e.g. pd.tslib.Timestamp(tmin)).</p>
+</div></blockquote>
+<p><strong>tmax: str</strong></p>
+<blockquote>
+<div><p>string with a year or date that can be turned into a pandas
+Timestamp (e.g. pd.tslib.Timestamp(tmax)).</p>
+</div></blockquote>
+<p><strong>freq: str</strong></p>
+<p><strong>use_oseries: Boolean</strong></p>
+<blockquote>
+<div><p>boolean to check the tmin and tmax against the oseries.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">tmin, tmax: pd.Timestamp</p>
+<blockquote class="last">
+<div><p>returns a pandas timestamp for tmin and tmax.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>The tmin and tmax are checked and returned according to the
+following rules:</p>
+<ol class="upperalpha simple">
+<li><dl class="first docutils">
+<dt>If no value for tmin/tmax is provided:</dt>
+<dd><ol class="first last arabic">
+<li>if use_oseries is false, tmin is set to minimum of the tseries.</li>
+<li>if use_series is true tmin is set to minimum of the oseries.</li>
+</ol>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>If a values for tmin/tmax is provided:</dt>
+<dd><ol class="first last arabic">
+<li>A pandas timestamp is made from the string</li>
+<li>if use_oseries is True, tmin is checked against oseries.</li>
+<li>tmin is checked against the tseries.</li>
+</ol>
+</dd>
+</dl>
+</li>
+<li>In all cases an offset for the tmin and tmax is added.</li>
+</ol>
+<p>A detailed description of dealing with tmin and tmax and timesteps
+in general can be found in the developers section of the docs.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pastas.model.Model.initialize">
+<code class="descname">initialize</code><span class="sig-paren">(</span><em>initial=True</em>, <em>noise=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/model.html#Model.initialize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.model.Model.initialize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize the model before solving.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>initial: Boolean</strong></p>
+<blockquote>
+<div><p>Use initial values from parameter dataframe if True. If false, the
+optimal values are used.</p>
+</div></blockquote>
+<p><strong>noise: Boolean</strong></p>
+<blockquote class="last">
+<div><p>Add the parameters for the noisemodel to the parameters
+Dataframe or not.</p>
+</div></blockquote>
 </td>
 </tr>
 </tbody>
@@ -386,28 +520,156 @@ current working directory when running your python scripts.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="pastas.model.Model.simulate">
-<code class="descname">simulate</code><span class="sig-paren">(</span><em>parameters=None</em>, <em>tmin=None</em>, <em>tmax=None</em>, <em>freq='D'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/model.html#Model.simulate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.model.Model.simulate" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
+<dt id="pastas.model.Model.innovations">
+<code class="descname">innovations</code><span class="sig-paren">(</span><em>parameters=None</em>, <em>tmin=None</em>, <em>tmax=None</em>, <em>freq=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/model.html#Model.innovations"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.model.Model.innovations" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method to simulate the innovations when a noisemodel is present.</p>
+<table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>t: Optional[pd.series.index]</strong></p>
-<blockquote>
-<div><p>Time indices to use for the simulation of the time series model.</p>
-</div></blockquote>
-<p><strong>p: Optional[array]</strong></p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>parameters: Optional[list]</strong></p>
 <blockquote>
 <div><p>Array of the parameters used in the time series model.</p>
 </div></blockquote>
-<p><strong>noise:</strong></p>
+<p><strong>tmin: Optional[str]</strong></p>
+<p><strong>tmax: Optional[str]</strong></p>
+<p><strong>freq: Optional[str]</strong></p>
+<blockquote>
+<div><p>frequency at which the time series are simulated.</p>
+</div></blockquote>
+<p><strong>h_observed: Optional[pd.Series]</strong></p>
+<blockquote>
+<div><p>Pandas series containing the observed values.</p>
+</div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Pandas Series object containing the simulated time series.</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">v: pd.Series</p>
+<blockquote class="last">
+<div><p>Pandas series of the innovations.</p>
+</div></blockquote>
 </td>
 </tr>
 </tbody>
 </table>
+<p class="rubric">Notes</p>
+<p>The innovations are the time series that result when applying a noise
+model.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pastas.model.Model.observations">
+<code class="descname">observations</code><span class="sig-paren">(</span><em>tmin=None</em>, <em>tmax=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/model.html#Model.observations"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.model.Model.observations" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method that returns the observations series.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pastas.model.Model.residuals">
+<code class="descname">residuals</code><span class="sig-paren">(</span><em>parameters=None</em>, <em>tmin=None</em>, <em>tmax=None</em>, <em>freq=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/model.html#Model.residuals"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.model.Model.residuals" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the residual series.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>parameters: Optional[list]</strong></p>
+<blockquote>
+<div><p>Array of the parameters used in the time series model.</p>
+</div></blockquote>
+<p><strong>tmin: Optional[str]</strong></p>
+<p><strong>tmax: Optional[str]</strong></p>
+<p><strong>freq: Optional[str]</strong></p>
+<blockquote>
+<div><p>frequency at which the time series are simulated.</p>
+</div></blockquote>
+<p><strong>h_observed: Optional[pd.Series]</strong></p>
+<blockquote>
+<div><p>Pandas series containing the observed values.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">res: pd.Series</p>
+<blockquote class="last">
+<div><p>Pandas series with the residuals series.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pastas.model.Model.sample">
+<code class="descname">sample</code><span class="sig-paren">(</span><em>series</em>, <em>tindex</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/model.html#Model.sample"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.model.Model.sample" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sample the series so that the frequency is not higher that tindex.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>series: pd.Series</strong></p>
+<blockquote>
+<div><p>pandas series object.</p>
+</div></blockquote>
+<p><strong>tindex: pd.index</strong></p>
+<blockquote>
+<div><p>Pandas index object</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">series: pd.Series</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>Find the index closest to the tindex, and then return a selection
+of series</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pastas.model.Model.set_freq_offset">
+<code class="descname">set_freq_offset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/model.html#Model.set_freq_offset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.model.Model.set_freq_offset" title="Permalink to this definition">¶</a></dt>
+<dd><p class="rubric">Notes</p>
+<p>Methods to check if the frequency is:</p>
+<ol class="arabic simple">
+<li>The frequency should be the same for all tseries</li>
+<li>tseries timestamps should match (e.g. similar hours)</li>
+<li>freq of the tseries is lower than the max tdelta of the oseries</li>
+</ol>
+</dd></dl>
+
+<dl class="method">
+<dt id="pastas.model.Model.simulate">
+<code class="descname">simulate</code><span class="sig-paren">(</span><em>parameters=None</em>, <em>tmin=None</em>, <em>tmax=None</em>, <em>freq=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/model.html#Model.simulate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.model.Model.simulate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Simulate the time series model.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>parameters: Optional[list]</strong></p>
+<blockquote>
+<div><p>Array of the parameters used in the time series model.</p>
+</div></blockquote>
+<p><strong>tmin: Optional[str]</strong></p>
+<p><strong>tmax: Optional[str]</strong></p>
+<p><strong>freq: Optional[str]</strong></p>
+<blockquote>
+<div><p>frequency at which the time series are simulated.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">h: pd.Series</p>
+<blockquote class="last">
+<div><p>Pandas Series object containing the simulated time series</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>This method can be used without any parameters. When the model is
+solved, the optimal parameters values are used and if not,
+the initial parameter values are used. This allows the user to
+obtain an idea of how the simulation looks with only the initial
+parameters and no calibration.</p>
 </dd></dl>
 
 <dl class="method">
@@ -436,9 +698,9 @@ current working directory when running your python scripts.</p>
 </div></blockquote>
 <p><strong>noise: Boolean</strong></p>
 <blockquote>
-<div><p>Use the nose model (True) or not (False).</p>
+<div><p>Use the noise model (True) or not (False).</p>
 </div></blockquote>
-<p><strong>initialize: Boolean</strong></p>
+<p><strong>initial: Boolean</strong></p>
 <blockquote class="last">
 <div><p>Reset initial parameters.</p>
 </div></blockquote>
@@ -451,12 +713,150 @@ current working directory when running your python scripts.</p>
 </dd></dl>
 
 </div>
+<div class="section" id="module-pastas.plots">
+<span id="pastas-plots-module"></span><h2>pastas.plots module<a class="headerlink" href="#module-pastas.plots" title="Permalink to this headline">¶</a></h2>
+<p>This file contains the plotting functionalities that are available for Pastas.</p>
+<div class="section" id="usage">
+<h3>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h3>
+<p>ml.plot.decomposition()</p>
+<dl class="class">
+<dt id="pastas.plots.Plotting">
+<em class="property">class </em><code class="descclassname">pastas.plots.</code><code class="descname">Plotting</code><span class="sig-paren">(</span><em>ml</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/plots.html#Plotting"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.plots.Plotting" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p class="rubric">Methods</p>
+<dl class="method">
+<dt id="pastas.plots.Plotting.block_response">
+<code class="descname">block_response</code><span class="sig-paren">(</span><em>series=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/plots.html#Plotting.block_response"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.plots.Plotting.block_response" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot the block response for a specific series.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">fig: Figure</p>
+<blockquote class="last">
+<div><p>return a Matplotlib figure instance.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pastas.plots.Plotting.decomposition">
+<code class="descname">decomposition</code><span class="sig-paren">(</span><em>tmin=None</em>, <em>tmax=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/plots.html#Plotting.decomposition"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.plots.Plotting.decomposition" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot the decomposition of a time-series in the different stresses.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pastas.plots.Plotting.diagnostics">
+<code class="descname">diagnostics</code><span class="sig-paren">(</span><em>tmin=None</em>, <em>tmax=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/plots.html#Plotting.diagnostics"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.plots.Plotting.diagnostics" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pastas.plots.Plotting.plot">
+<code class="descname">plot</code><span class="sig-paren">(</span><em>tmin=None</em>, <em>tmax=None</em>, <em>oseries=True</em>, <em>simulate=True</em>, <em>figsize=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/plots.html#Plotting.plot"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.plots.Plotting.plot" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>oseries: Boolean</strong></p>
+<blockquote>
+<div><p>True to plot the observed time series.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Plot of the simulated and optionally the observed time series</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pastas.plots.Plotting.results">
+<code class="descname">results</code><span class="sig-paren">(</span><em>tmin=None</em>, <em>tmax=None</em>, <em>savefig=False</em>, <em>figsize=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/plots.html#Plotting.results"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.plots.Plotting.results" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>tmin/tmax: str</strong></p>
+<blockquote>
+<div><p>start and end time for plotting</p>
+</div></blockquote>
+<p><strong>savefig: Optional[Boolean]</strong></p>
+<blockquote class="last">
+<div><p>True to save the figure, False is default. Figure is saved in the
+current working directory when running your python scripts.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pastas.plots.Plotting.step_response">
+<code class="descname">step_response</code><span class="sig-paren">(</span><em>series=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/plots.html#Plotting.step_response"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.plots.Plotting.step_response" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot the step response for a specific series.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">fig: Figure</p>
+<blockquote class="last">
+<div><p>return a Matplotlib figure instance.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
 <div class="section" id="module-pastas.rfunc">
 <span id="pastas-rfunc-module"></span><h2>pastas.rfunc module<a class="headerlink" href="#module-pastas.rfunc" title="Permalink to this headline">¶</a></h2>
+<p>rfunc module.
+Contains classes for the response functions.
+Each response function class needs the following:</p>
+<dl class="class">
+<dt id="pastas.rfunc.Bruggeman">
+<em class="property">class </em><code class="descclassname">pastas.rfunc.</code><code class="descname">Bruggeman</code><span class="sig-paren">(</span><em>up=True</em>, <em>meanstress=1</em>, <em>cutoff=0.99</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/rfunc.html#Bruggeman"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.rfunc.Bruggeman" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pastas.rfunc.RfuncBase" title="pastas.rfunc.RfuncBase"><code class="xref py py-class docutils literal"><span class="pre">pastas.rfunc.RfuncBase</span></code></a></p>
+<p>The function of Bruggeman, for a river in a confined aquifer, overlain
+by an aquitard with aquiferous ditches.</p>
+<p class="rubric">References</p>
+<p>[1] <a class="reference external" href="http://grondwaterformules.nl/index.php/formules/waterloop/deklaag-met-sloten">http://grondwaterformules.nl/index.php/formules/waterloop/deklaag-met-sloten</a></p>
+<p class="rubric">Methods</p>
+<dl class="method">
+<dt id="pastas.rfunc.Bruggeman.block">
+<code class="descname">block</code><span class="sig-paren">(</span><em>p</em>, <em>dt=1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/rfunc.html#Bruggeman.block"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.rfunc.Bruggeman.block" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pastas.rfunc.Bruggeman.polder_function">
+<code class="descname">polder_function</code><span class="sig-paren">(</span><em>x</em>, <em>y</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/rfunc.html#Bruggeman.polder_function"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.rfunc.Bruggeman.polder_function" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pastas.rfunc.Bruggeman.set_parameters">
+<code class="descname">set_parameters</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/rfunc.html#Bruggeman.set_parameters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.rfunc.Bruggeman.set_parameters" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pastas.rfunc.Bruggeman.step">
+<code class="descname">step</code><span class="sig-paren">(</span><em>p</em>, <em>dt=1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/rfunc.html#Bruggeman.step"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.rfunc.Bruggeman.step" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 <dl class="class">
 <dt id="pastas.rfunc.Exponential">
-<em class="property">class </em><code class="descclassname">pastas.rfunc.</code><code class="descname">Exponential</code><span class="sig-paren">(</span><em>cutoff</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/rfunc.html#Exponential"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.rfunc.Exponential" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<em class="property">class </em><code class="descclassname">pastas.rfunc.</code><code class="descname">Exponential</code><span class="sig-paren">(</span><em>up=True</em>, <em>meanstress=1</em>, <em>cutoff=0.99</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/rfunc.html#Exponential"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.rfunc.Exponential" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pastas.rfunc.RfuncBase" title="pastas.rfunc.RfuncBase"><code class="xref py py-class docutils literal"><span class="pre">pastas.rfunc.RfuncBase</span></code></a></p>
 <blockquote>
 <div><p>Exponential response function with 2 parameters: A and a.</p>
 <div class="math">
@@ -465,12 +865,18 @@ current working directory when running your python scripts.</p>
 <p class="rubric">Attributes</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="22%" />
-<col width="78%" />
+<col width="13%" />
+<col width="87%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td>nparam: integer</td>
 <td>number of parameters.</td>
+</tr>
+<tr class="row-even"><td>up: boolean</td>
+<td>indicates whether a positive stress will cause the head to go up (True) or down (False)</td>
+</tr>
+<tr class="row-odd"><td>meanstress: float</td>
+<td>mean value of the stress, used to set the initial value such that the final step times the mean stress equals 1</td>
 </tr>
 <tr class="row-even"><td>cutoff: float</td>
 <td>percentage after which the step function is cut off.</td>
@@ -483,7 +889,7 @@ current working directory when running your python scripts.</p>
 <p class="rubric">Methods</p>
 <dl class="method">
 <dt id="pastas.rfunc.Exponential.block">
-<code class="descname">block</code><span class="sig-paren">(</span><em>p</em>, <em>dt</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/rfunc.html#Exponential.block"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.rfunc.Exponential.block" title="Permalink to this definition">¶</a></dt>
+<code class="descname">block</code><span class="sig-paren">(</span><em>p</em>, <em>dt=1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/rfunc.html#Exponential.block"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.rfunc.Exponential.block" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -493,28 +899,35 @@ current working directory when running your python scripts.</p>
 
 <dl class="method">
 <dt id="pastas.rfunc.Exponential.step">
-<code class="descname">step</code><span class="sig-paren">(</span><em>p</em>, <em>dt</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/rfunc.html#Exponential.step"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.rfunc.Exponential.step" title="Permalink to this definition">¶</a></dt>
+<code class="descname">step</code><span class="sig-paren">(</span><em>p</em>, <em>dt=1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/rfunc.html#Exponential.step"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.rfunc.Exponential.step" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="class">
 <dt id="pastas.rfunc.Gamma">
-<em class="property">class </em><code class="descclassname">pastas.rfunc.</code><code class="descname">Gamma</code><span class="sig-paren">(</span><em>cutoff=0.99</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/rfunc.html#Gamma"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.rfunc.Gamma" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<em class="property">class </em><code class="descclassname">pastas.rfunc.</code><code class="descname">Gamma</code><span class="sig-paren">(</span><em>up=True</em>, <em>meanstress=1</em>, <em>cutoff=0.99</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/rfunc.html#Gamma"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.rfunc.Gamma" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pastas.rfunc.RfuncBase" title="pastas.rfunc.RfuncBase"><code class="xref py py-class docutils literal"><span class="pre">pastas.rfunc.RfuncBase</span></code></a></p>
 <blockquote>
 <div><p>Gamma response function with 3 parameters A, a, and n.</p>
-<p>step(t) = A * Gammainc(n, t / a)</p>
+<div class="math">
+\[step(t) = A * Gammainc(n, t / a)\]</div>
 </div></blockquote>
 <p class="rubric">Attributes</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="22%" />
-<col width="78%" />
+<col width="13%" />
+<col width="87%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td>nparam: integer</td>
 <td>number of parameters.</td>
+</tr>
+<tr class="row-even"><td>up: boolean</td>
+<td>indicates whether a positive stress will cause the head to go up (True) or down (False)</td>
+</tr>
+<tr class="row-odd"><td>meanstress: float</td>
+<td>mean value of the stress, used to set the initial value such that the final step times the mean stress equals 1</td>
 </tr>
 <tr class="row-even"><td>cutoff: float</td>
 <td>percentage after which the step function is cut off.</td>
@@ -527,7 +940,7 @@ current working directory when running your python scripts.</p>
 <p class="rubric">Methods</p>
 <dl class="method">
 <dt id="pastas.rfunc.Gamma.block">
-<code class="descname">block</code><span class="sig-paren">(</span><em>p</em>, <em>dt</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/rfunc.html#Gamma.block"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.rfunc.Gamma.block" title="Permalink to this definition">¶</a></dt>
+<code class="descname">block</code><span class="sig-paren">(</span><em>p</em>, <em>dt=1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/rfunc.html#Gamma.block"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.rfunc.Gamma.block" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -537,29 +950,36 @@ current working directory when running your python scripts.</p>
 
 <dl class="method">
 <dt id="pastas.rfunc.Gamma.step">
-<code class="descname">step</code><span class="sig-paren">(</span><em>p</em>, <em>dt</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/rfunc.html#Gamma.step"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.rfunc.Gamma.step" title="Permalink to this definition">¶</a></dt>
+<code class="descname">step</code><span class="sig-paren">(</span><em>p</em>, <em>dt=1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/rfunc.html#Gamma.step"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.rfunc.Gamma.step" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="class">
 <dt id="pastas.rfunc.Hantush">
-<em class="property">class </em><code class="descclassname">pastas.rfunc.</code><code class="descname">Hantush</code><span class="sig-paren">(</span><em>cutoff</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/rfunc.html#Hantush"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.rfunc.Hantush" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<em class="property">class </em><code class="descclassname">pastas.rfunc.</code><code class="descname">Hantush</code><span class="sig-paren">(</span><em>up=False</em>, <em>meanstress=1</em>, <em>cutoff=0.99</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/rfunc.html#Hantush"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.rfunc.Hantush" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pastas.rfunc.RfuncBase" title="pastas.rfunc.RfuncBase"><code class="xref py py-class docutils literal"><span class="pre">pastas.rfunc.RfuncBase</span></code></a></p>
 <p>The Hantush well function</p>
+<p class="rubric">Notes</p>
+<p>Parameters are rho = r / lambda and cS</p>
 <p class="rubric">References</p>
 <p>[1] Hantush, M. S., &amp; Jacob, C. E. (1955). Non‐steady radial flow in an
-infinite leaky aquifer. Eos, Transactions American Geophysical Union, 36(1),
-95-100.</p>
+infinite leaky aquifer. Eos, Transactions American Geophysical Union,
+36(1), 95-100.</p>
 <p>[2] Veling, E. J. M., &amp; Maas, C. (2010). Hantush well function revisited.
 Journal of hydrology, 393(3), 381-388.</p>
 <p>[3] Von Asmuth, J. R., Maas, K., Bakker, M., &amp; Petersen, J. (2008). Modeling
-time series of ground water head fluctuations subjected to multiple stresses.
-Ground Water, 46(1), 30-40.</p>
+time series of ground water head fluctuations subjected to multiple
+stresses. Ground Water, 46(1), 30-40.</p>
 <p class="rubric">Methods</p>
 <dl class="method">
 <dt id="pastas.rfunc.Hantush.block">
-<code class="descname">block</code><span class="sig-paren">(</span><em>p</em>, <em>r</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/rfunc.html#Hantush.block"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.rfunc.Hantush.block" title="Permalink to this definition">¶</a></dt>
+<code class="descname">block</code><span class="sig-paren">(</span><em>p</em>, <em>dt=1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/rfunc.html#Hantush.block"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.rfunc.Hantush.block" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pastas.rfunc.Hantush.calc_tmax">
+<code class="descname">calc_tmax</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/rfunc.html#Hantush.calc_tmax"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.rfunc.Hantush.calc_tmax" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -569,34 +989,64 @@ Ground Water, 46(1), 30-40.</p>
 
 <dl class="method">
 <dt id="pastas.rfunc.Hantush.step">
-<code class="descname">step</code><span class="sig-paren">(</span><em>p</em>, <em>r</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/rfunc.html#Hantush.step"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.rfunc.Hantush.step" title="Permalink to this definition">¶</a></dt>
+<code class="descname">step</code><span class="sig-paren">(</span><em>p</em>, <em>dt=1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/rfunc.html#Hantush.step"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.rfunc.Hantush.step" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="class">
 <dt id="pastas.rfunc.One">
-<em class="property">class </em><code class="descclassname">pastas.rfunc.</code><code class="descname">One</code><span class="sig-paren">(</span><em>cutoff</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/rfunc.html#One"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.rfunc.One" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<em class="property">class </em><code class="descclassname">pastas.rfunc.</code><code class="descname">One</code><span class="sig-paren">(</span><em>up</em>, <em>meanstress</em>, <em>cutoff</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/rfunc.html#One"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.rfunc.One" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pastas.rfunc.RfuncBase" title="pastas.rfunc.RfuncBase"><code class="xref py py-class docutils literal"><span class="pre">pastas.rfunc.RfuncBase</span></code></a></p>
 <p>Dummy class for Constant. Returns 1</p>
 <p class="rubric">Methods</p>
 <dl class="method">
 <dt id="pastas.rfunc.One.block">
-<code class="descname">block</code><span class="sig-paren">(</span><em>p</em>, <em>dt</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/rfunc.html#One.block"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.rfunc.One.block" title="Permalink to this definition">¶</a></dt>
+<code class="descname">block</code><span class="sig-paren">(</span><em>p</em>, <em>dt=1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/rfunc.html#One.block"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.rfunc.One.block" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pastas.rfunc.One.set_parameters">
+<code class="descname">set_parameters</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/rfunc.html#One.set_parameters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.rfunc.One.set_parameters" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="pastas.rfunc.One.step">
-<code class="descname">step</code><span class="sig-paren">(</span><em>p</em>, <em>dt</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/rfunc.html#One.step"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.rfunc.One.step" title="Permalink to this definition">¶</a></dt>
+<code class="descname">step</code><span class="sig-paren">(</span><em>p</em>, <em>dt=1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/rfunc.html#One.step"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.rfunc.One.step" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pastas.rfunc.RfuncBase">
+<em class="property">class </em><code class="descclassname">pastas.rfunc.</code><code class="descname">RfuncBase</code><span class="sig-paren">(</span><em>up</em>, <em>meanstress</em>, <em>cutoff</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/rfunc.html#RfuncBase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.rfunc.RfuncBase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p class="rubric">Methods</p>
+<dl class="method">
+<dt id="pastas.rfunc.RfuncBase.block">
+<code class="descname">block</code><span class="sig-paren">(</span><em>p</em>, <em>dt=1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/rfunc.html#RfuncBase.block"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.rfunc.RfuncBase.block" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pastas.rfunc.RfuncBase.set_parameters">
+<code class="descname">set_parameters</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/rfunc.html#RfuncBase.set_parameters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.rfunc.RfuncBase.set_parameters" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pastas.rfunc.RfuncBase.step">
+<code class="descname">step</code><span class="sig-paren">(</span><em>p</em>, <em>dt=1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/rfunc.html#RfuncBase.step"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.rfunc.RfuncBase.step" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="class">
 <dt id="pastas.rfunc.Theis">
-<em class="property">class </em><code class="descclassname">pastas.rfunc.</code><code class="descname">Theis</code><span class="sig-paren">(</span><em>cutoff</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/rfunc.html#Theis"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.rfunc.Theis" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
-<p>The Theis well function</p>
+<em class="property">class </em><code class="descclassname">pastas.rfunc.</code><code class="descname">Theis</code><span class="sig-paren">(</span><em>up=True</em>, <em>meanstress=1</em>, <em>cutoff=0.99</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/rfunc.html#Theis"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.rfunc.Theis" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pastas.rfunc.RfuncBase" title="pastas.rfunc.RfuncBase"><code class="xref py py-class docutils literal"><span class="pre">pastas.rfunc.RfuncBase</span></code></a></p>
+<p>The Theis well function.</p>
+<p class="rubric">Notes</p>
+<p>Theis may not be very appropiate, as the drawdown will continue
+indefinitely.</p>
 <p class="rubric">References</p>
 <p>[1] Theis, C. V. (1935). The relation between the lowering of the Piezometric
 surface and the rate and duration of discharge of a well using ground‐water
@@ -604,7 +1054,7 @@ storage. Eos, Transactions American Geophysical Union, 16(2), 519-524.</p>
 <p class="rubric">Methods</p>
 <dl class="method">
 <dt id="pastas.rfunc.Theis.block">
-<code class="descname">block</code><span class="sig-paren">(</span><em>p</em>, <em>r</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/rfunc.html#Theis.block"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.rfunc.Theis.block" title="Permalink to this definition">¶</a></dt>
+<code class="descname">block</code><span class="sig-paren">(</span><em>p</em>, <em>dt=1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/rfunc.html#Theis.block"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.rfunc.Theis.block" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -614,7 +1064,7 @@ storage. Eos, Transactions American Geophysical Union, 16(2), 519-524.</p>
 
 <dl class="method">
 <dt id="pastas.rfunc.Theis.step">
-<code class="descname">step</code><span class="sig-paren">(</span><em>p</em>, <em>r</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/rfunc.html#Theis.step"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.rfunc.Theis.step" title="Permalink to this definition">¶</a></dt>
+<code class="descname">step</code><span class="sig-paren">(</span><em>p</em>, <em>dt=1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/rfunc.html#Theis.step"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.rfunc.Theis.step" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -635,6 +1085,22 @@ storage. Eos, Transactions American Geophysical Union, 16(2), 519-524.</p>
 </dd></dl>
 
 <dl class="class">
+<dt id="pastas.solver.LeastSquares">
+<em class="property">class </em><code class="descclassname">pastas.solver.</code><code class="descname">LeastSquares</code><span class="sig-paren">(</span><em>model</em>, <em>tmin=None</em>, <em>tmax=None</em>, <em>noise=True</em>, <em>freq='D'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/solver.html#LeastSquares"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.solver.LeastSquares" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p>Solving the model using Scipy&#8217;s least_squares method</p>
+<p class="rubric">Notes</p>
+<p>This method uses the
+<a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.least_squares.html">https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.least_squares.html</a></p>
+<p class="rubric">Methods</p>
+<dl class="method">
+<dt id="pastas.solver.LeastSquares.objfunction">
+<code class="descname">objfunction</code><span class="sig-paren">(</span><em>parameters</em>, <em>tmin</em>, <em>tmax</em>, <em>noise</em>, <em>model</em>, <em>freq</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/solver.html#LeastSquares.objfunction"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.solver.LeastSquares.objfunction" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
 <dt id="pastas.solver.LmfitSolve">
 <em class="property">class </em><code class="descclassname">pastas.solver.</code><code class="descname">LmfitSolve</code><span class="sig-paren">(</span><em>model</em>, <em>tmin=None</em>, <em>tmax=None</em>, <em>noise=True</em>, <em>freq='D'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/solver.html#LmfitSolve"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.solver.LmfitSolve" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
@@ -649,21 +1115,19 @@ storage. Eos, Transactions American Geophysical Union, 16(2), 519-524.</p>
 </div>
 <div class="section" id="module-pastas.stats">
 <span id="pastas-stats-module"></span><h2>pastas.stats module<a class="headerlink" href="#module-pastas.stats" title="Permalink to this headline">¶</a></h2>
-<p>Statistics for time series models.</p>
-<p>Statistics can be calculated for the following time series:
+<p>Statistics for time series models.
+Statistics can be calculated for the following time series:
 - Observation series
 - Simulated series
 - Residual series
-- Innovation series</p>
-<p>Each of these series can be obtained through their individual (private) get
-method for a specific time frame.</p>
-<p>two different types of statistics are provided: model statistics and
-descriptive statistics for each series.</p>
-<div class="section" id="usage">
-<h3>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ml</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
-</pre></div>
-</div>
+- Innovation series
+Each of these series can be obtained through their individual (private) get
+method for a specific time frame.
+two different types of statistics are provided: model statistics and
+descriptive statistics for each series.
+Usage
+&#8212;&#8211;
+&gt;&gt;&gt; ml.stats.summary()</p>
 <blockquote>
 <div>Value</div></blockquote>
 <p>Statistic
@@ -672,115 +1136,663 @@ Root mean squared error           0.432442
 Bayesian Information Criterion  113.809120
 Average Deviation                 0.335966
 Explained variance percentage    72.701968
-Akaike InformationCriterion      25.327385</p>
-</div>
-<div class="section" id="todo">
-<h3>TODO<a class="headerlink" href="#todo" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li>ACF for irregular timesteps</li>
-<li>PACF for irregular timestep</li>
-<li>Nash-Sutcliffe</li>
-<li>portmanteau test (ljung-Box &amp; Box-Pierce)</li>
-</ul>
+Akaike InformationCriterion      25.327385
+TODO
+&#8212;-
+- ACF for irregular timesteps
+- PACF for irregular timestep
+- Nash-Sutcliffe
+- portmanteau test (ljung-Box &amp; Box-Pierce)</p>
 <dl class="class">
 <dt id="pastas.stats.Statistics">
 <em class="property">class </em><code class="descclassname">pastas.stats.</code><code class="descname">Statistics</code><span class="sig-paren">(</span><em>ml</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/stats.html#Statistics"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.stats.Statistics" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
-<p>This class contains all the statistical methods available.</p>
 <p class="rubric">Methods</p>
 <dl class="method">
 <dt id="pastas.stats.Statistics.acf">
 <code class="descname">acf</code><span class="sig-paren">(</span><em>tmin=None</em>, <em>tmax=None</em>, <em>nlags=20</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/stats.html#Statistics.acf"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.stats.Statistics.acf" title="Permalink to this definition">¶</a></dt>
 <dd><p>Autocorrelation function.</p>
+<p class="rubric">Notes</p>
+<p>For the autocorrelation function the acf method from Statsmodels
+package is used untill an alternative is found. However, please be
+aware that this can lead to incorrect values for irregular time steps.</p>
+<p>Please refer to the Statsmodels docs:
+<a class="reference external" href="http://statsmodels.sourceforge.net/devel/_modules/statsmodels/tsa/stattools.html#acf">http://statsmodels.sourceforge.net/devel/_modules/statsmodels/tsa/stattools.html#acf</a></p>
+<p>TODO: Compute autocorrelation for irregulat time steps.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="pastas.stats.Statistics.aic">
 <code class="descname">aic</code><span class="sig-paren">(</span><em>tmin=None</em>, <em>tmax=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/stats.html#Statistics.aic"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.stats.Statistics.aic" title="Permalink to this definition">¶</a></dt>
-<dd><p>Akaike Information Criterium</p>
-<p>AIC = -2 log(L) + 2 S_j
-S_j : Number of free parameters</p>
+<dd><p>Akaike Information Criterium (AIC).</p>
+<p class="rubric">Notes</p>
+<div class="math">
+\[AIC = -2 log(L) + 2 nparam\]</div>
+<dl class="docutils">
+<dt>Where</dt>
+<dd>nparam = Number of free parameters
+L = likelihood function for the model.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pastas.stats.Statistics.all">
+<code class="descname">all</code><span class="sig-paren">(</span><em>tmin=None</em>, <em>tmax=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/stats.html#Statistics.all"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.stats.Statistics.all" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a dictionary with all the statistics.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>tmin: str</strong></p>
+<p><strong>tmax: str</strong></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">stats: pd.DataFrame</p>
+<blockquote class="last">
+<div><p>Dataframe with all possible statistics</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="pastas.stats.Statistics.avg_dev">
 <code class="descname">avg_dev</code><span class="sig-paren">(</span><em>tmin=None</em>, <em>tmax=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/stats.html#Statistics.avg_dev"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.stats.Statistics.avg_dev" title="Permalink to this definition">¶</a></dt>
 <dd><p>Average deviation of the residuals.</p>
+<p class="rubric">Notes</p>
+<div class="math">
+\[avg_dev = sum(E) / N\]</div>
+<p>Where N is the number of the residuals.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="pastas.stats.Statistics.bic">
 <code class="descname">bic</code><span class="sig-paren">(</span><em>tmin=None</em>, <em>tmax=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/stats.html#Statistics.bic"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.stats.Statistics.bic" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bayesian Information Criterium</p>
-<p>BIC = -2 log(L) + S_j log(N)
-S_j : Number of free parameters</p>
+<dd><p>Bayesian Information Criterium.</p>
+<p class="rubric">Notes</p>
+<p>The Bayesian Information Criterium is calculated as follows:</p>
+<div class="math">
+\[BIC = -2 log(L) + nparam * log(N)\]</div>
+<dl class="docutils">
+<dt>Where:</dt>
+<dd>nparam : Number of free parameters</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pastas.stats.Statistics.bykey">
+<code class="descname">bykey</code><span class="sig-paren">(</span><em>key</em>, <em>tmin=None</em>, <em>tmax=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/stats.html#Statistics.bykey"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.stats.Statistics.bykey" title="Permalink to this definition">¶</a></dt>
+<dd><p>Worker function for GHG and GLG statistcs.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>key</strong> : None, optional</p>
+<blockquote>
+<div><p>timeseries key (&#8216;observations&#8217; or &#8216;simulated&#8217;)</p>
+</div></blockquote>
+<p><strong>tmin, tmax: Optional[pd.Timestamp]</strong></p>
+<blockquote>
+<div><p>Time indices to use for the simulation of the time series model.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">TYPE</p>
+<blockquote class="last">
+<div><p>Description</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pastas.stats.Statistics.d_ghg">
+<code class="descname">d_ghg</code><span class="sig-paren">(</span><em>tmin=None</em>, <em>tmax=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/stats.html#Statistics.d_ghg"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.stats.Statistics.d_ghg" title="Permalink to this definition">¶</a></dt>
+<dd><p>Difference in GHG between simulated and observed values</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>tmin, tmax: Optional[pd.Timestamp]</strong></p>
+<blockquote>
+<div><p>Time indices to use for the simulation of the time series model.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">TYPE</p>
+<blockquote class="last">
+<div><p>Description</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pastas.stats.Statistics.d_glg">
+<code class="descname">d_glg</code><span class="sig-paren">(</span><em>tmin=None</em>, <em>tmax=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/stats.html#Statistics.d_glg"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.stats.Statistics.d_glg" title="Permalink to this definition">¶</a></dt>
+<dd><p>Difference in GLG between simulated and observed values</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>tmin, tmax: Optional[pd.Timestamp]</strong></p>
+<blockquote>
+<div><p>Time indices to use for the simulation of the time series model.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">TYPE</p>
+<blockquote class="last">
+<div><p>Description</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pastas.stats.Statistics.d_gvg">
+<code class="descname">d_gvg</code><span class="sig-paren">(</span><em>tmin=None</em>, <em>tmax=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/stats.html#Statistics.d_gvg"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.stats.Statistics.d_gvg" title="Permalink to this definition">¶</a></dt>
+<dd><p>Difference in GVG between simulated and observed values</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>tmin, tmax: Optional[pd.Timestamp]</strong></p>
+<blockquote>
+<div><p>Time indices to use for the simulation of the time series model.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">TYPE</p>
+<blockquote class="last">
+<div><p>Description</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="pastas.stats.Statistics.descriptive">
 <code class="descname">descriptive</code><span class="sig-paren">(</span><em>tmin=None</em>, <em>tmax=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/stats.html#Statistics.descriptive"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.stats.Statistics.descriptive" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Returns the descriptive statistics for all time series.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pastas.stats.Statistics.durbin_watson">
+<code class="descname">durbin_watson</code><span class="sig-paren">(</span><em>tmin=None</em>, <em>tmax=None</em>, <em>series='innovations'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/stats.html#Statistics.durbin_watson"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.stats.Statistics.durbin_watson" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method to calculate the durbin watson statistic.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>tmin</strong></p>
+<p><strong>tmax</strong></p>
+<p><strong>series</strong></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">dw: float</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>The Durban Watson statistic can be used to make a statement on the
+correlation between the values.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="pastas.stats.Statistics.evp">
 <code class="descname">evp</code><span class="sig-paren">(</span><em>tmin=None</em>, <em>tmax=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/stats.html#Statistics.evp"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.stats.Statistics.evp" title="Permalink to this definition">¶</a></dt>
 <dd><p>Explained variance percentage.</p>
-<p>evp = (var(h) - var(res)) / var(h) * 100%</p>
+<p class="rubric">Notes</p>
+<p>Commonly used statistic in time series models of groundwater level.
+It has to be noted that a high EVP value does not necessarily indicate
+a good time series model.</p>
+<div class="math">
+\[evp = (var(h) - var(res)) / var(h) * 100%\]</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="pastas.stats.Statistics.ghg">
+<code class="descname">ghg</code><span class="sig-paren">(</span><em>tmin=None</em>, <em>tmax=None</em>, <em>key='simulated'</em>, <em>fill_method='linear'</em>, <em>limit=15</em>, <em>output='mean'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/stats.html#Statistics.ghg"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.stats.Statistics.ghg" title="Permalink to this definition">¶</a></dt>
+<dd><p>Classic method:
+Resampling the series to every 14th and 28th of the month.
+Taking the mean of the mean of three highest values per year.</p>
+<p>This function does not care about series length!</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>tmin, tmax</strong> : Optional[pd.Timestamp]</p>
+<blockquote>
+<div><p>Time indices to use for the simulation of the time series model.</p>
+</div></blockquote>
+<p><strong>key</strong> : None, optional</p>
+<blockquote>
+<div><p>timeseries key (&#8216;observations&#8217; or &#8216;simulated&#8217;)</p>
+</div></blockquote>
+<p><strong>fill_method</strong> : str</p>
+<blockquote>
+<div><p>fill method for interpolation to 14th and 28th of the month
+see: <a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.Series.ffill.html">http://pandas.pydata.org/pandas-docs/stable/generated/pandas.Series.ffill.html</a></p>
+<blockquote>
+<div><p><a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.Series.bfill.html">http://pandas.pydata.org/pandas-docs/stable/generated/pandas.Series.bfill.html</a>
+<a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.Series.interpolate.html">http://pandas.pydata.org/pandas-docs/stable/generated/pandas.Series.interpolate.html</a></p>
+</div></blockquote>
+<p>Use None to omit filling and drop NaNs</p>
+</div></blockquote>
+<p><strong>limit</strong> : int or None</p>
+<blockquote>
+<div><p>Maximum number of timesteps to fill using fill method, use None to fill all</p>
+</div></blockquote>
+<p><strong>output</strong> : str</p>
+<blockquote>
+<div><p>output type &#8216;yearly&#8217; for series of yearly values, &#8216;mean&#8217; for
+mean of yearly values</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">pd.Series or scalar</p>
+<blockquote class="last">
+<div><p>Series of yearly values or mean of yearly values</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pastas.stats.Statistics.glg">
+<code class="descname">glg</code><span class="sig-paren">(</span><em>tmin=None</em>, <em>tmax=None</em>, <em>key='simulated'</em>, <em>fill_method='linear'</em>, <em>limit=15</em>, <em>output='mean'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/stats.html#Statistics.glg"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.stats.Statistics.glg" title="Permalink to this definition">¶</a></dt>
+<dd><p>Classic method:
+Resampling the series to every 14th and 28th of the month.
+Taking the mean of the mean of three lowest values per year.</p>
+<p>This function does not care about series length!</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>tmin, tmax</strong> : Optional[pd.Timestamp]</p>
+<blockquote>
+<div><p>Time indices to use for the simulation of the time series model.</p>
+</div></blockquote>
+<p><strong>key</strong> : None, optional</p>
+<blockquote>
+<div><p>timeseries key (&#8216;observations&#8217; or &#8216;simulated&#8217;)</p>
+</div></blockquote>
+<p><strong>fill_method</strong> : str</p>
+<blockquote>
+<div><p>fill method for interpolation to 14th and 28th of the month
+see: <a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.Series.ffill.html">http://pandas.pydata.org/pandas-docs/stable/generated/pandas.Series.ffill.html</a></p>
+<blockquote>
+<div><p><a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.Series.bfill.html">http://pandas.pydata.org/pandas-docs/stable/generated/pandas.Series.bfill.html</a>
+<a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.Series.interpolate.html">http://pandas.pydata.org/pandas-docs/stable/generated/pandas.Series.interpolate.html</a></p>
+</div></blockquote>
+<p>Use None to omit filling and drop NaNs</p>
+</div></blockquote>
+<p><strong>limit</strong> : int or None</p>
+<blockquote>
+<div><p>Maximum number of timesteps to fill using fill method, use None to fill all</p>
+</div></blockquote>
+<p><strong>output</strong> : str</p>
+<blockquote>
+<div><p>output type &#8216;yearly&#8217; for series of yearly values, &#8216;mean&#8217; for
+mean of yearly values</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">pd.Series or scalar</p>
+<blockquote class="last">
+<div><p>Series of yearly values or mean of yearly values</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pastas.stats.Statistics.gvg">
+<code class="descname">gvg</code><span class="sig-paren">(</span><em>tmin=None</em>, <em>tmax=None</em>, <em>key='simulated'</em>, <em>fill_method='linear'</em>, <em>limit=15</em>, <em>output='mean'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/stats.html#Statistics.gvg"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.stats.Statistics.gvg" title="Permalink to this definition">¶</a></dt>
+<dd><p>Classic method:
+Resampling the series to every 14th and 28th of the month.
+Taking the mean of the values on March 14, March 28 and April 14.</p>
+<p>This function does not care about series length!</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>tmin, tmax</strong> : Optional[pd.Timestamp]</p>
+<blockquote>
+<div><p>Time indices to use for the simulation of the time series model.</p>
+</div></blockquote>
+<p><strong>key</strong> : None, optional</p>
+<blockquote>
+<div><p>timeseries key (&#8216;observations&#8217; or &#8216;simulated&#8217;)</p>
+</div></blockquote>
+<p><strong>fill_method</strong> : str</p>
+<blockquote>
+<div><p>fill method for interpolation to 14th and 28th of the month
+see: <a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.Series.ffill.html">http://pandas.pydata.org/pandas-docs/stable/generated/pandas.Series.ffill.html</a></p>
+<blockquote>
+<div><p><a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.Series.bfill.html">http://pandas.pydata.org/pandas-docs/stable/generated/pandas.Series.bfill.html</a>
+<a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.Series.interpolate.html">http://pandas.pydata.org/pandas-docs/stable/generated/pandas.Series.interpolate.html</a></p>
+</div></blockquote>
+<p>Use None to omit filling and drop NaNs</p>
+</div></blockquote>
+<p><strong>limit</strong> : int or None</p>
+<blockquote>
+<div><p>Maximum number of timesteps to fill using fill method, use None to fill all</p>
+</div></blockquote>
+<p><strong>output</strong> : str</p>
+<blockquote>
+<div><p>output type &#8216;yearly&#8217; for series of yearly values, &#8216;mean&#8217; for
+mean of yearly values</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">pd.Series or scalar</p>
+<blockquote class="last">
+<div><p>Series of yearly values or mean of yearly values</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pastas.stats.Statistics.gxg">
+<code class="descname">gxg</code><span class="sig-paren">(</span><em>year_agg</em>, <em>tmin</em>, <em>tmax</em>, <em>key</em>, <em>fill_method</em>, <em>limit</em>, <em>output</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/stats.html#Statistics.gxg"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.stats.Statistics.gxg" title="Permalink to this definition">¶</a></dt>
+<dd><p>Worker method for classic GXG statistics.
+Resampling the series to every 14th and 28th of the month.
+Taking the mean of aggregated values per year.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>year_agg</strong> : function series -&gt; scalar</p>
+<blockquote>
+<div><p>Aggregator function to one value per year</p>
+</div></blockquote>
+<p><strong>tmin, tmax</strong> : Optional[pd.Timestamp]</p>
+<blockquote>
+<div><p>Time indices to use for the simulation of the time series model.</p>
+</div></blockquote>
+<p><strong>key</strong> : None, optional</p>
+<blockquote>
+<div><p>timeseries key (&#8216;observations&#8217; or &#8216;simulated&#8217;)</p>
+</div></blockquote>
+<p><strong>fill_method</strong> : str or None</p>
+<blockquote>
+<div><p>fill method for interpolation to 14th and 28th of the month
+see: <a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.Series.ffill.html">http://pandas.pydata.org/pandas-docs/stable/generated/pandas.Series.ffill.html</a></p>
+<blockquote>
+<div><p><a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.Series.bfill.html">http://pandas.pydata.org/pandas-docs/stable/generated/pandas.Series.bfill.html</a>
+<a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.Series.interpolate.html">http://pandas.pydata.org/pandas-docs/stable/generated/pandas.Series.interpolate.html</a></p>
+</div></blockquote>
+<p>Use None to omit filling and drop NaNs</p>
+</div></blockquote>
+<p><strong>limit</strong> : int or None</p>
+<blockquote>
+<div><p>Maximum number of timesteps to fill using fill method, use None to fill all</p>
+</div></blockquote>
+<p><strong>output</strong> : str</p>
+<blockquote>
+<div><p>output type &#8216;yearly&#8217; for series of yearly values, &#8216;mean&#8217; for
+mean of yearly values</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">pd.Series or scalar</p>
+<blockquote>
+<div><p>Series of yearly values or mean of yearly values</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><strong>ValueError</strong></p>
+<blockquote class="last">
+<div><p>When output argument is unknown</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pastas.stats.Statistics.many">
+<code class="descname">many</code><span class="sig-paren">(</span><em>tmin=None</em>, <em>tmax=None</em>, <em>stats=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/stats.html#Statistics.many"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.stats.Statistics.many" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method returns the values for a provided list of statistics.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>tmin</strong></p>
+<p><strong>tmax</strong></p>
+<p><strong>stats: list</strong></p>
+<blockquote class="last">
+<div><p>list of statistics that need to be calculated.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="pastas.stats.Statistics.pacf">
 <code class="descname">pacf</code><span class="sig-paren">(</span><em>tmin=None</em>, <em>tmax=None</em>, <em>nlags=20</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/stats.html#Statistics.pacf"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.stats.Statistics.pacf" title="Permalink to this definition">¶</a></dt>
 <dd><p>Partial autocorrelation function.</p>
-<p><a class="reference external" href="http://statsmodels.sourceforge.net/devel/_modules/statsmodels/tsa/stattools.html#acf">http://statsmodels.sourceforge.net/devel/_modules/statsmodels/tsa/stattools.html#acf</a></p>
+<p class="rubric">Notes</p>
+<p>For the partial autocorrelation function the acf method from
+Statsmodels package is used untill an alternative is found. However,
+please be aware that this can lead to incorrect values for irregular
+time steps.</p>
+<p>Please refer to the Statsmodels docs:
+<a class="reference external" href="http://statsmodels.sourceforge.net/devel/_modules/statsmodels/tsa/stattools.html#pacf">http://statsmodels.sourceforge.net/devel/_modules/statsmodels/tsa/stattools.html#pacf</a></p>
+<p>TODO: Compute  partial autocorrelation for irregulat time steps.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="pastas.stats.Statistics.pearson">
-<code class="descname">pearson</code><span class="sig-paren">(</span><em>tmin=None</em>, <em>tmax=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/stats.html#Statistics.pearson"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.stats.Statistics.pearson" title="Permalink to this definition">¶</a></dt>
-<dd><p>Correlation between observed and simulated series.</p>
+<dt id="pastas.stats.Statistics.q_ghg">
+<code class="descname">q_ghg</code><span class="sig-paren">(</span><em>tmin=None</em>, <em>tmax=None</em>, <em>key='simulated'</em>, <em>q=0.94</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/stats.html#Statistics.q_ghg"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.stats.Statistics.q_ghg" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gemiddeld Hoogste Grondwaterstand (GHG) also called MHGL (Mean High Groundwater Level)
+Approximated by taking a quantile of the timeseries values, after
+resampling to daily values.</p>
+<p>This function does not care about series length!</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>key</strong> : None, optional</p>
+<blockquote>
+<div><p>timeseries key (&#8216;observations&#8217; or &#8216;simulated&#8217;)</p>
+</div></blockquote>
+<p><strong>tmin, tmax: Optional[pd.Timestamp]</strong></p>
+<blockquote>
+<div><p>Time indices to use for the simulation of the time series model.</p>
+</div></blockquote>
+<p><strong>q</strong> : float, optional</p>
+<blockquote>
+<div><p>quantile, fraction of exceedance (default 0.94)</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">TYPE</p>
+<blockquote class="last">
+<div><p>Description</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
-<dt id="pastas.stats.Statistics.plot_diagnostics">
-<code class="descname">plot_diagnostics</code><span class="sig-paren">(</span><em>tmin=None</em>, <em>tmax=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/stats.html#Statistics.plot_diagnostics"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.stats.Statistics.plot_diagnostics" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dt id="pastas.stats.Statistics.q_glg">
+<code class="descname">q_glg</code><span class="sig-paren">(</span><em>tmin=None</em>, <em>tmax=None</em>, <em>key='simulated'</em>, <em>q=0.06</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/stats.html#Statistics.q_glg"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.stats.Statistics.q_glg" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gemiddeld Laagste Grondwaterstand (GLG) also called MLGL (Mean Low Groundwater Level)
+Approximated by taking a quantile of the timeseries values, after
+resampling to daily values.</p>
+<p>This function does not care about series length!</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>key</strong> : None, optional</p>
+<blockquote>
+<div><p>timeseries key (&#8216;observations&#8217; or &#8216;simulated&#8217;)</p>
+</div></blockquote>
+<p><strong>tmin, tmax</strong> : Optional[pd.Timestamp]</p>
+<blockquote>
+<div><p>Time indices to use for the simulation of the time series model.</p>
+</div></blockquote>
+<p><strong>q</strong> : float, optional</p>
+<blockquote>
+<div><p>quantile, fraction of exceedance (default 0.06)</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">TYPE</p>
+<blockquote class="last">
+<div><p>Description</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="method">
-<dt id="pastas.stats.Statistics.r_corrected">
-<code class="descname">r_corrected</code><span class="sig-paren">(</span><em>tmin=None</em>, <em>tmax=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/stats.html#Statistics.r_corrected"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.stats.Statistics.r_corrected" title="Permalink to this definition">¶</a></dt>
-<dd><p>Corrected R-squared</p>
-<p>R_corrected = 1 - (n-1) / (n-N_param) * RSS/TSS</p>
+<dt id="pastas.stats.Statistics.q_gvg">
+<code class="descname">q_gvg</code><span class="sig-paren">(</span><em>tmin=None</em>, <em>tmax=None</em>, <em>key='simulated'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/stats.html#Statistics.q_gvg"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.stats.Statistics.q_gvg" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gemiddeld Voorjaarsgrondwaterstand (GVG) also called MSGL (Mean Spring Groundwater Level)
+Approximated by taking the median of the values in the
+period between 14 March and 15 April (after resampling to daily values).</p>
+<p>This function does not care about series length!</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>key</strong> : None, optional</p>
+<blockquote>
+<div><p>timeseries key (&#8216;observations&#8217; or &#8216;simulated&#8217;)</p>
+</div></blockquote>
+<p><strong>tmin, tmax: Optional[pd.Timestamp]</strong></p>
+<blockquote>
+<div><p>Time indices to use for the simulation of the time series model.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">TYPE</p>
+<blockquote class="last">
+<div><p>Description</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="pastas.stats.Statistics.rmse">
 <code class="descname">rmse</code><span class="sig-paren">(</span><em>tmin=None</em>, <em>tmax=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/stats.html#Statistics.rmse"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.stats.Statistics.rmse" title="Permalink to this definition">¶</a></dt>
 <dd><p>Root mean squared error of the residuals.</p>
-<p>rmse = sqrt(sum(residuals**2) / N)</p>
+<p class="rubric">Notes</p>
+<div class="math">
+\[rmse = sqrt(sum(residuals**2) / N)\]</div>
+<p>where N is the number of residuals.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pastas.stats.Statistics.rmsi">
+<code class="descname">rmsi</code><span class="sig-paren">(</span><em>tmin=None</em>, <em>tmax=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/stats.html#Statistics.rmsi"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.stats.Statistics.rmsi" title="Permalink to this definition">¶</a></dt>
+<dd><p>Root mean squared error of the innovations.</p>
+<p class="rubric">Notes</p>
+<div class="math">
+\[rmsi = sqrt(sum(innovations**2) / N)\]</div>
+<p>where N is the number of innovations.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pastas.stats.Statistics.rsq">
+<code class="descname">rsq</code><span class="sig-paren">(</span><em>tmin=None</em>, <em>tmax=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/stats.html#Statistics.rsq"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.stats.Statistics.rsq" title="Permalink to this definition">¶</a></dt>
+<dd><p>Correlation between observed and simulated series.</p>
+<p class="rubric">Notes</p>
+<p>For the calculation of this statistic the corrcoef method from numpy
+is used.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">sim</span><span class="p">,</span> <span class="n">obs</span><span class="p">)[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Please refer to the Numpy Docs:
+<a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.corrcoef.html#numpy.corrcoef">https://docs.scipy.org/doc/numpy/reference/generated/numpy.corrcoef.html#numpy.corrcoef</a></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pastas.stats.Statistics.rsq_adj">
+<code class="descname">rsq_adj</code><span class="sig-paren">(</span><em>tmin=None</em>, <em>tmax=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/stats.html#Statistics.rsq_adj"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.stats.Statistics.rsq_adj" title="Permalink to this definition">¶</a></dt>
+<dd><p>R-squared Adjusted for the number of free parameters.</p>
+<p class="rubric">Notes</p>
+<div class="math">
+\[R_{corrected} = 1 - (n-1) / (n-N_param) * RSS/TSS\]</div>
+<dl class="docutils">
+<dt>Where:</dt>
+<dd>RSS = sum of the squared residuals.
+TSS = ??
+N = Number of observations
+N_Param = Number of free parameters</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="pastas.stats.Statistics.sse">
 <code class="descname">sse</code><span class="sig-paren">(</span><em>tmin=None</em>, <em>tmax=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/stats.html#Statistics.sse"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.stats.Statistics.sse" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Sum of the squares of the error (SSE)</p>
+<p class="rubric">Notes</p>
+<p>The SSE is calculated as follows:</p>
+<div class="math">
+\[SSE = sum(E ** 2)\]</div>
+<p>Where E is an array of the residual series.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="pastas.stats.Statistics.summary">
-<code class="descname">summary</code><span class="sig-paren">(</span><em>output='basic'</em>, <em>tmin=None</em>, <em>tmax=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/stats.html#Statistics.summary"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.stats.Statistics.summary" title="Permalink to this definition">¶</a></dt>
+<code class="descname">summary</code><span class="sig-paren">(</span><em>selected='basic'</em>, <em>tmin=None</em>, <em>tmax=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/stats.html#Statistics.summary"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.stats.Statistics.summary" title="Permalink to this definition">¶</a></dt>
 <dd><p>Prints a summary table of the model statistics. The set of statistics
 that are printed are selected by a dictionary of the desired statistics.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>output: str or dict</strong></p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>selected_output</strong> : str or dict</p>
 <blockquote>
 <div><p>dictionary of the desired statistics or a string with one of the
-predefined sets. Supported options are: &#8216;basic&#8217;, &#8216;all&#8217;, and &#8216;dutch&#8217;.</p>
+predefined sets. Supported options are: &#8216;basic&#8217;, &#8216;all&#8217;, and &#8216;dutch&#8217;</p>
 </div></blockquote>
 <p><strong>tmin</strong></p>
-<p class="last"><strong>tmax</strong></p>
+<p><strong>tmax</strong> : None, optional</p>
+<blockquote>
+<div><p>Description</p>
+</div></blockquote>
+<p><strong>tmax</strong></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>stats</strong> : Pandas Dataframe</p>
+<blockquote class="last">
+<div><p>single-column dataframe with calculated statistics</p>
+</div></blockquote>
 </td>
 </tr>
 </tbody>
@@ -790,7 +1802,6 @@ predefined sets. Supported options are: &#8216;basic&#8217;, &#8216;all&#8217;, 
 </dd></dl>
 
 </div>
-</div>
 <div class="section" id="module-pastas.tseries">
 <span id="pastas-tseries-module"></span><h2>pastas.tseries module<a class="headerlink" href="#module-pastas.tseries" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
@@ -798,16 +1809,16 @@ predefined sets. Supported options are: &#8216;basic&#8217;, &#8216;all&#8217;, 
 <dd><p class="first">Constains class for time series objects.</p>
 <p>Each response function class needs the following:</p>
 <dl class="docutils">
-<dt>nparam</dt>
- <span class="classifier-delimiter">:</span> <span class="classifier">int</span><dd>Number of parameters.</dd>
-<dt>name</dt>
- <span class="classifier-delimiter">:</span> <span class="classifier">str</span><dd>Name of this tseries object. Used as prefix for the parameters.</dd>
-<dt>parameters</dt>
- <span class="classifier-delimiter">:</span> <span class="classifier">pandas Dataframe</span><dd>Dataframe containing the parameters.</dd>
+<dt>nparam <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd>Number of parameters.</dd>
+<dt>name <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd>Name of this tseries object. Used as prefix for the parameters.</dd>
+<dt>parameters <span class="classifier-delimiter">:</span> <span class="classifier">pandas Dataframe</span></dt>
+<dd>Dataframe containing the parameters.</dd>
 </dl>
 <dl class="last docutils">
-<dt>simulate</dt>
- <span class="classifier-delimiter">:</span> <span class="classifier">Returns pandas Series Object with simulate values</span><dd>Input: tindex: Optional pandas TimeIndex. Time index to simulate
+<dt>simulate <span class="classifier-delimiter">:</span> <span class="classifier">Returns pandas Series Object with simulate values</span></dt>
+<dd>Input: tindex: Optional pandas TimeIndex. Time index to simulate
 values
 p: Optional[array-like]. Parameters used for simulation. If p is not
 provided, parameters attribute will be used.
@@ -817,7 +1828,7 @@ Returns: pandas Series of simulated values</dd>
 </dl>
 <dl class="class">
 <dt id="pastas.tseries.Constant">
-<em class="property">class </em><code class="descclassname">pastas.tseries.</code><code class="descname">Constant</code><span class="sig-paren">(</span><em>name='Constant'</em>, <em>xy=None</em>, <em>metadata=None</em>, <em>value=0.0</em>, <em>pmin=-5</em>, <em>pmax=5</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/tseries.html#Constant"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.tseries.Constant" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">pastas.tseries.</code><code class="descname">Constant</code><span class="sig-paren">(</span><em>name</em>, <em>xy=None</em>, <em>metadata=None</em>, <em>value=0.0</em>, <em>pmin=nan</em>, <em>pmax=nan</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/tseries.html#Constant"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.tseries.Constant" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#pastas.tseries.TseriesBase" title="pastas.tseries.TseriesBase"><code class="xref py py-class docutils literal"><span class="pre">pastas.tseries.TseriesBase</span></code></a></p>
 <p>A constant value that is added to the time series model.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -841,7 +1852,7 @@ series.</p>
 
 <dl class="method">
 <dt id="pastas.tseries.Constant.simulate">
-<code class="descname">simulate</code><span class="sig-paren">(</span><em>p=None</em>, <em>t=None</em>, <em>dt=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/tseries.html#Constant.simulate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.tseries.Constant.simulate" title="Permalink to this definition">¶</a></dt>
+<code class="descname">simulate</code><span class="sig-paren">(</span><em>p=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/tseries.html#Constant.simulate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.tseries.Constant.simulate" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -852,8 +1863,13 @@ series.</p>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
 <p>Noise model with exponential decay of the residual.</p>
 <p class="rubric">Notes</p>
-<p>Calculates the innovations [1] according to:
-v(t1) = r(t1) - r(t0) * exp(- (t1 - t0) / alpha)</p>
+<p>Calculates the innovations [1] according to:</p>
+<p>..math:: v(t1) = r(t1) - r(t0) * exp(- (t1 - t0) / alpha)</p>
+<p>It can happen that the noisemodel is used in during the model calibration
+to explain most of the variation in the data. A recommended solution is to
+scale the initial parameter with the model timestep, E.g.:
+&gt;&gt;&gt; n = NoiseModel()
+&gt;&gt;&gt; n.set_initial(&#8220;noise_alpha&#8221;, 1.0 * ml.get_dt(ml.freq))</p>
 <p class="rubric">References</p>
 <table class="docutils citation" frame="void" id="r1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
@@ -865,8 +1881,8 @@ v(t1) = r(t1) - r(t0) * exp(- (t1 - t0) / alpha)</p>
 Res., 41, W12404, doi:10.1029/2004WR003726.</p>
 <p class="rubric">Methods</p>
 <dl class="method">
-<dt id="pastas.tseries.NoiseModel.fix_parameters">
-<code class="descname">fix_parameters</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/tseries.html#NoiseModel.fix_parameters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.tseries.NoiseModel.fix_parameters" title="Permalink to this definition">¶</a></dt>
+<dt id="pastas.tseries.NoiseModel.fix_parameter">
+<code class="descname">fix_parameter</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/tseries.html#NoiseModel.fix_parameter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.tseries.NoiseModel.fix_parameter" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -875,8 +1891,19 @@ Res., 41, W12404, doi:10.1029/2004WR003726.</p>
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="pastas.tseries.NoiseModel.set_parameters">
-<code class="descname">set_parameters</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/tseries.html#NoiseModel.set_parameters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.tseries.NoiseModel.set_parameters" title="Permalink to this definition">¶</a></dt>
+<dt id="pastas.tseries.NoiseModel.set_initial">
+<code class="descname">set_initial</code><span class="sig-paren">(</span><em>name</em>, <em>value</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/tseries.html#NoiseModel.set_initial"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.tseries.NoiseModel.set_initial" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method to set the initial parameter value</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pastas.tseries.NoiseModel.set_max">
+<code class="descname">set_max</code><span class="sig-paren">(</span><em>name</em>, <em>value</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/tseries.html#NoiseModel.set_max"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.tseries.NoiseModel.set_max" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pastas.tseries.NoiseModel.set_min">
+<code class="descname">set_min</code><span class="sig-paren">(</span><em>name</em>, <em>value</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/tseries.html#NoiseModel.set_min"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.tseries.NoiseModel.set_min" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -918,7 +1945,7 @@ Res., 41, W12404, doi:10.1029/2004WR003726.</p>
 
 <dl class="class">
 <dt id="pastas.tseries.Recharge">
-<em class="property">class </em><code class="descclassname">pastas.tseries.</code><code class="descname">Recharge</code><span class="sig-paren">(</span><em>precip</em>, <em>evap</em>, <em>rfunc</em>, <em>recharge</em>, <em>name='Recharge'</em>, <em>metadata=None</em>, <em>xy=(0</em>, <em>0)</em>, <em>freq=(None</em>, <em>None)</em>, <em>fillnan=('mean'</em>, <em>'interpolate')</em>, <em>cutoff=0.99</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/tseries.html#Recharge"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.tseries.Recharge" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">pastas.tseries.</code><code class="descname">Recharge</code><span class="sig-paren">(</span><em>precip</em>, <em>evap</em>, <em>rfunc</em>, <em>recharge</em>, <em>name</em>, <em>metadata=None</em>, <em>xy=(0</em>, <em>0)</em>, <em>freq=(None</em>, <em>None)</em>, <em>fillnan=('mean'</em>, <em>'interpolate')</em>, <em>cutoff=0.99</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/tseries.html#Recharge"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.tseries.Recharge" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#pastas.tseries.TseriesBase" title="pastas.tseries.TseriesBase"><code class="xref py py-class docutils literal"><span class="pre">pastas.tseries.TseriesBase</span></code></a></p>
 <p>Time series model performing convolution on groundwater recharge
 calculated from precipitation and evaporation with a single response function.</p>
@@ -979,6 +2006,29 @@ levels: Application to the Veluwe. MSc. thesis, TU Delft.
 <a class="reference external" href="http://repository.tudelft.nl/view/ir/uuid:baf4fc8c-6311-407c-b01f-c80a96ecd584/">http://repository.tudelft.nl/view/ir/uuid:baf4fc8c-6311-407c-b01f-c80a96ecd584/</a></p>
 <p class="rubric">Methods</p>
 <dl class="method">
+<dt id="pastas.tseries.Recharge.get_stress">
+<code class="descname">get_stress</code><span class="sig-paren">(</span><em>p=None</em>, <em>tindex=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/tseries.html#Recharge.get_stress"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.tseries.Recharge.get_stress" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the stress or stresses of the time series object as a pandas
+DataFrame. If the time series object has multiple stresses each column
+represents a stress.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>tindex: pd TimeIndex</strong></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">stress: pd DataFrame</p>
+<blockquote class="last">
+<div><p>DataFrame containing the stresses with the required time indices.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
 <dt id="pastas.tseries.Recharge.set_init_parameters">
 <code class="descname">set_init_parameters</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/tseries.html#Recharge.set_init_parameters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.tseries.Recharge.set_init_parameters" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -992,7 +2042,7 @@ levels: Application to the Veluwe. MSc. thesis, TU Delft.
 
 <dl class="class">
 <dt id="pastas.tseries.Tseries">
-<em class="property">class </em><code class="descclassname">pastas.tseries.</code><code class="descname">Tseries</code><span class="sig-paren">(</span><em>stress</em>, <em>rfunc</em>, <em>name</em>, <em>metadata=None</em>, <em>xy=(0</em>, <em>0)</em>, <em>freq=None</em>, <em>fillnan='mean'</em>, <em>cutoff=0.99</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/tseries.html#Tseries"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.tseries.Tseries" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">pastas.tseries.</code><code class="descname">Tseries</code><span class="sig-paren">(</span><em>stress</em>, <em>rfunc</em>, <em>name</em>, <em>metadata=None</em>, <em>xy=(0</em>, <em>0)</em>, <em>freq=None</em>, <em>fillnan='mean'</em>, <em>up=True</em>, <em>cutoff=0.99</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/tseries.html#Tseries"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.tseries.Tseries" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#pastas.tseries.TseriesBase" title="pastas.tseries.TseriesBase"><code class="xref py py-class docutils literal"><span class="pre">pastas.tseries.TseriesBase</span></code></a></p>
 <p>Time series model consisting of the convolution of one stress with one
 response function.</p>
@@ -1078,10 +2128,11 @@ interpolation.</p>
 
 <dl class="class">
 <dt id="pastas.tseries.Tseries2">
-<em class="property">class </em><code class="descclassname">pastas.tseries.</code><code class="descname">Tseries2</code><span class="sig-paren">(</span><em>stress0</em>, <em>stress1</em>, <em>rfunc</em>, <em>name</em>, <em>metadata=None</em>, <em>xy=(0</em>, <em>0)</em>, <em>freq=None</em>, <em>fillnan=('mean'</em>, <em>'interpolate')</em>, <em>cutoff=0.99</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/tseries.html#Tseries2"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.tseries.Tseries2" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">pastas.tseries.</code><code class="descname">Tseries2</code><span class="sig-paren">(</span><em>stress0</em>, <em>stress1</em>, <em>rfunc</em>, <em>name</em>, <em>metadata=None</em>, <em>xy=(0</em>, <em>0)</em>, <em>freq=None</em>, <em>fillnan=('mean'</em>, <em>'interpolate')</em>, <em>up=True</em>, <em>cutoff=0.99</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/tseries.html#Tseries2"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.tseries.Tseries2" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#pastas.tseries.TseriesBase" title="pastas.tseries.TseriesBase"><code class="xref py py-class docutils literal"><span class="pre">pastas.tseries.TseriesBase</span></code></a></p>
 <p>Time series model consisting of the convolution of two stresses with one
-response function.</p>
+response function. The first stress causes the head to go up and the second
+stress causes the head to go down.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -1131,6 +2182,11 @@ interpolation.</p>
 </table>
 <p class="rubric">Methods</p>
 <dl class="method">
+<dt id="pastas.tseries.Tseries2.get_stress">
+<code class="descname">get_stress</code><span class="sig-paren">(</span><em>p=None</em>, <em>tindex=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/tseries.html#Tseries2.get_stress"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.tseries.Tseries2.get_stress" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="pastas.tseries.Tseries2.set_init_parameters">
 <code class="descname">set_init_parameters</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/tseries.html#Tseries2.set_init_parameters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.tseries.Tseries2.set_init_parameters" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the initial parameters back to their default values.</p>
@@ -1168,7 +2224,7 @@ interpolation.</p>
 
 <dl class="class">
 <dt id="pastas.tseries.TseriesBase">
-<em class="property">class </em><code class="descclassname">pastas.tseries.</code><code class="descname">TseriesBase</code><span class="sig-paren">(</span><em>rfunc</em>, <em>name</em>, <em>xy</em>, <em>metadata</em>, <em>tmin</em>, <em>tmax</em>, <em>cutoff</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/tseries.html#TseriesBase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.tseries.TseriesBase" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">pastas.tseries.</code><code class="descname">TseriesBase</code><span class="sig-paren">(</span><em>rfunc</em>, <em>name</em>, <em>xy</em>, <em>metadata</em>, <em>tmin</em>, <em>tmax</em>, <em>up</em>, <em>meanstress</em>, <em>cutoff</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/tseries.html#TseriesBase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.tseries.TseriesBase" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
 <p>Tseries Base class called by each Tseries object.</p>
 <p class="rubric">Methods</p>
@@ -1176,6 +2232,26 @@ interpolation.</p>
 <dt id="pastas.tseries.TseriesBase.fix_parameter">
 <code class="descname">fix_parameter</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/tseries.html#TseriesBase.fix_parameter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.tseries.TseriesBase.fix_parameter" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="method">
+<dt id="pastas.tseries.TseriesBase.get_stress">
+<code class="descname">get_stress</code><span class="sig-paren">(</span><em>p=None</em>, <em>tindex=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/tseries.html#TseriesBase.get_stress"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.tseries.TseriesBase.get_stress" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the stress or stresses of the time series object as a pandas
+DataFrame. If the time series object has multiple stresses each column
+represents a stress.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">stress: pd.Dataframe()</p>
+<blockquote class="last">
+<div><p>Pandas dataframe of the stress(es)</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="method">
 <dt id="pastas.tseries.TseriesBase.set_initial">
@@ -1196,18 +2272,18 @@ interpolation.</p>
 </dd></dl>
 
 <dl class="class">
-<dt id="pastas.tseries.Well">
-<em class="property">class </em><code class="descclassname">pastas.tseries.</code><code class="descname">Well</code><span class="sig-paren">(</span><em>stress</em>, <em>rfunc</em>, <em>r</em>, <em>name</em>, <em>metadata=None</em>, <em>xy=(0</em>, <em>0)</em>, <em>freq=None</em>, <em>fillna='mean'</em>, <em>cutoff=0.99</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/tseries.html#Well"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.tseries.Well" title="Permalink to this definition">¶</a></dt>
+<dt id="pastas.tseries.TseriesNoConv">
+<em class="property">class </em><code class="descclassname">pastas.tseries.</code><code class="descname">TseriesNoConv</code><span class="sig-paren">(</span><em>stress</em>, <em>rfunc</em>, <em>name</em>, <em>metadata=None</em>, <em>xy=(0</em>, <em>0)</em>, <em>freq=None</em>, <em>fillnan='mean'</em>, <em>up=True</em>, <em>cutoff=0.99</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/tseries.html#TseriesNoConv"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.tseries.TseriesNoConv" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#pastas.tseries.TseriesBase" title="pastas.tseries.TseriesBase"><code class="xref py py-class docutils literal"><span class="pre">pastas.tseries.TseriesBase</span></code></a></p>
-<p>Time series model consisting of the convolution of one or more stresses with
-one response function.</p>
+<p>Time series model consisting of the calculation of one stress with one
+response function, without the use of convolution (so it is slooooow)</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>stress: list</strong></p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>stress: pd.Series</strong></p>
 <blockquote>
-<div><p>list of pandas Series objects containing the stresses.</p>
+<div><p>pandas Series object containing the stress.</p>
 </div></blockquote>
 <p><strong>rfunc: rfunc class</strong></p>
 <blockquote>
@@ -1246,6 +2322,114 @@ interpolation.</p>
 </table>
 <p class="rubric">Methods</p>
 <dl class="method">
+<dt id="pastas.tseries.TseriesNoConv.set_init_parameters">
+<code class="descname">set_init_parameters</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/tseries.html#TseriesNoConv.set_init_parameters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.tseries.TseriesNoConv.set_init_parameters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the initial parameters (back) to their default values.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pastas.tseries.TseriesNoConv.simulate">
+<code class="descname">simulate</code><span class="sig-paren">(</span><em>p</em>, <em>tindex=None</em>, <em>dt=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/tseries.html#TseriesNoConv.simulate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.tseries.TseriesNoConv.simulate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Simulates the head contribution, without convolution.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>p: 1D array</strong></p>
+<blockquote>
+<div><p>Parameters used for simulation.</p>
+</div></blockquote>
+<p><strong>tindex: Optional[Pandas time series]</strong></p>
+<blockquote>
+<div><p>Time indices to simulate the model.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Pandas Series Object</p>
+<blockquote class="last">
+<div><p>The simulated head contribution.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pastas.tseries.TseriesStep">
+<em class="property">class </em><code class="descclassname">pastas.tseries.</code><code class="descname">TseriesStep</code><span class="sig-paren">(</span><em>t_step</em>, <em>name</em>, <em>rfunc=&lt;class 'pastas.rfunc.One'&gt;</em>, <em>xy=None</em>, <em>metadata=None</em>, <em>up=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/tseries.html#TseriesStep"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.tseries.TseriesStep" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pastas.tseries.TseriesBase" title="pastas.tseries.TseriesBase"><code class="xref py py-class docutils literal"><span class="pre">pastas.tseries.TseriesBase</span></code></a></p>
+<p>A stress consisting of a step resonse from a specified time. The amplitude and form (if rfunc is not One) of the step is calibrated. Before t_step the response is zero.</p>
+<p class="rubric">Methods</p>
+<dl class="method">
+<dt id="pastas.tseries.TseriesStep.set_init_parameters">
+<code class="descname">set_init_parameters</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/tseries.html#TseriesStep.set_init_parameters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.tseries.TseriesStep.set_init_parameters" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pastas.tseries.TseriesStep.simulate">
+<code class="descname">simulate</code><span class="sig-paren">(</span><em>p</em>, <em>tindex=None</em>, <em>dt=1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/tseries.html#TseriesStep.simulate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.tseries.TseriesStep.simulate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pastas.tseries.Well">
+<em class="property">class </em><code class="descclassname">pastas.tseries.</code><code class="descname">Well</code><span class="sig-paren">(</span><em>stress</em>, <em>rfunc</em>, <em>name</em>, <em>r=None</em>, <em>metadata=None</em>, <em>xy=(0</em>, <em>0)</em>, <em>freq=None</em>, <em>fillna='mean'</em>, <em>up=True</em>, <em>cutoff=0.99</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/tseries.html#Well"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.tseries.Well" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pastas.tseries.TseriesBase" title="pastas.tseries.TseriesBase"><code class="xref py py-class docutils literal"><span class="pre">pastas.tseries.TseriesBase</span></code></a></p>
+<p>Time series model consisting of the convolution of one or more stresses
+with one response function.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>stress: pd.DataFrame</strong></p>
+<blockquote>
+<div><p>Pandas DataFrame object containing the stresses.</p>
+</div></blockquote>
+<p><strong>rfunc: rfunc class</strong></p>
+<blockquote>
+<div><p>Response function used in the convolution with the stresses.</p>
+</div></blockquote>
+<p><strong>name: str</strong></p>
+<blockquote>
+<div><p>Name of the stress</p>
+</div></blockquote>
+<p><strong>metadata: Optional[dict]</strong></p>
+<blockquote>
+<div><p>dictionary containing metadata about the stress.</p>
+</div></blockquote>
+<p><strong>xy: Optional[tuple]</strong></p>
+<blockquote>
+<div><p>XY location in lon-lat format used for making maps.</p>
+</div></blockquote>
+<p><strong>freq: Optional[str]</strong></p>
+<blockquote>
+<div><p>Frequency to which the stress series are transformed. By default,
+the frequency is inferred from the data and that frequency is used.
+The required string format is found
+at <a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/timeseries.html#offset">http://pandas.pydata.org/pandas-docs/stable/timeseries.html#offset</a>
+-aliases</p>
+</div></blockquote>
+<p><strong>fillnan: Optional[str or float]</strong></p>
+<blockquote class="last">
+<div><p>Methods or float number to fill nan-values. Default values is
+&#8216;mean&#8217;. Currently supported options are: &#8216;interpolate&#8217;, float,
+and &#8216;mean&#8217;. Interpolation is performed with a standard linear
+interpolation.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>This class implements convolution of multiple series with a the same
+response function. This is often applied when dealing with multiple
+wells in a time series model.</p>
+<p class="rubric">Methods</p>
+<dl class="method">
 <dt id="pastas.tseries.Well.set_init_parameters">
 <code class="descname">set_init_parameters</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/tseries.html#Well.set_init_parameters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.tseries.Well.set_init_parameters" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -1257,6 +2441,9 @@ interpolation.</p>
 
 </dd></dl>
 
+</div>
+<div class="section" id="module-pastas.version">
+<span id="pastas-version-module"></span><h2>pastas.version module<a class="headerlink" href="#module-pastas.version" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="module-pastas">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-pastas" title="Permalink to this headline">¶</a></h2>
@@ -1289,7 +2476,7 @@ interpolation.</p>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2017, M. Bakker, R.A. Collenteur, R. Calje, F. Schaars.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.6.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.5.
     </div>
   </body>
 </html>

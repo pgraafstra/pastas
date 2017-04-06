@@ -17,14 +17,16 @@
         VERSION:     '0.9',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <link rel="top" title="PASTAS 0.9 documentation" href="index.html" /> 
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
   </head>
   <body role="document">
 <div class="header">
@@ -81,10 +83,10 @@
   <ul>
 <li><a class="reference internal" href="#">pastas.read package</a><ul>
 <li><a class="reference internal" href="#submodules">Submodules</a></li>
-<li><a class="reference internal" href="#module-pastas.read.dinodata">pastas.read.dinodata module</a></li>
-<li><a class="reference internal" href="#module-pastas.read.knmidata">pastas.read.knmidata module</a></li>
-<li><a class="reference internal" href="#module-pastas.read.menydata">pastas.read.menydata module</a></li>
-<li><a class="reference internal" href="#module-pastas.read.read_series">pastas.read.read_series module</a></li>
+<li><a class="reference internal" href="#module-pastas.read.datamodel">pastas.read.datamodel module</a></li>
+<li><a class="reference internal" href="#module-pastas.read.dinoloket">pastas.read.dinoloket module</a></li>
+<li><a class="reference internal" href="#module-pastas.read.knmi">pastas.read.knmi module</a></li>
+<li><a class="reference internal" href="#module-pastas.read.menyanthes">pastas.read.menyanthes module</a></li>
 <li><a class="reference internal" href="#module-pastas.read">Module contents</a></li>
 </ul>
 </li>
@@ -93,7 +95,7 @@
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="_sources/pastas.read.txt"
+      <li><a href="_sources/pastas.read.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
@@ -122,113 +124,16 @@
 <div class="section" id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
 </div>
-<div class="section" id="module-pastas.read.dinodata">
-<span id="pastas-read-dinodata-module"></span><h2>pastas.read.dinodata module<a class="headerlink" href="#module-pastas.read.dinodata" title="Permalink to this headline">¶</a></h2>
-<p>&#64;author: ruben</p>
+<div class="section" id="module-pastas.read.datamodel">
+<span id="pastas-read-datamodel-module"></span><h2>pastas.read.datamodel module<a class="headerlink" href="#module-pastas.read.datamodel" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
-<dt id="pastas.read.dinodata.DinoGrondwaterstand">
-<em class="property">class </em><code class="descclassname">pastas.read.dinodata.</code><code class="descname">DinoGrondwaterstand</code><span class="sig-paren">(</span><em>fname</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/read/dinodata.html#DinoGrondwaterstand"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.read.dinodata.DinoGrondwaterstand" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
-</dd></dl>
-
-</div>
-<div class="section" id="module-pastas.read.knmidata">
-<span id="pastas-read-knmidata-module"></span><h2>pastas.read.knmidata module<a class="headerlink" href="#module-pastas.read.knmidata" title="Permalink to this headline">¶</a></h2>
-<p>&#64;author: ruben calje
-Reads daily meteorological data in a file from stations of the KNMI:
-knmi = KnmiStation.fromfile(filename)</p>
-<p>Data can be downloaded for the meteorological stations at:
-<a class="reference external" href="https://www.knmi.nl/nederland-nu/klimatologie/daggegevens">https://www.knmi.nl/nederland-nu/klimatologie/daggegevens</a>
-or
-<a class="reference external" href="http://projects.knmi.nl/klimatologie/daggegevens/selectie.cgi">http://projects.knmi.nl/klimatologie/daggegevens/selectie.cgi</a></p>
-<p>For the rainfall stations data is available at:
-<a class="reference external" href="https://www.knmi.nl/nederland-nu/klimatologie/monv/reeksen">https://www.knmi.nl/nederland-nu/klimatologie/monv/reeksen</a></p>
-<p>Also, data from the meteorological stations can be downloaded directly, for example with
-knmi = KnmiStation(stns=260, start=datetime(1970, 1, 1), end=datetime(1971, 1, 1))  # 260 = de bilt
-knmi.download()
-For now the direct download only works for meteorological stations and daily data (so no rainfall stations or hourly data)</p>
-<dl class="class">
-<dt id="pastas.read.knmidata.KnmiStation">
-<em class="property">class </em><code class="descclassname">pastas.read.knmidata.</code><code class="descname">KnmiStation</code><span class="sig-paren">(</span><em>start=None</em>, <em>end=None</em>, <em>inseason=False</em>, <em>vars='ALL'</em>, <em>stns='260'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/read/knmidata.html#KnmiStation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.read.knmidata.KnmiStation" title="Permalink to this definition">¶</a></dt>
+<dt id="pastas.read.datamodel.DataModel">
+<em class="property">class </em><code class="descclassname">pastas.read.datamodel.</code><code class="descname">DataModel</code><a class="reference internal" href="_modules/pastas/read/datamodel.html#DataModel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.read.datamodel.DataModel" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
 <p class="rubric">Methods</p>
 <dl class="method">
-<dt id="pastas.read.knmidata.KnmiStation.download">
-<code class="descname">download</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/read/knmidata.html#KnmiStation.download"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.read.knmidata.KnmiStation.download" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"></td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="classmethod">
-<dt id="pastas.read.knmidata.KnmiStation.fromfile">
-<em class="property">classmethod </em><code class="descname">fromfile</code><span class="sig-paren">(</span><em>fname</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/read/knmidata.html#KnmiStation.fromfile"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.read.knmidata.KnmiStation.fromfile" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="pastas.read.knmidata.KnmiStation.readdata">
-<code class="descname">readdata</code><span class="sig-paren">(</span><em>f</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/read/knmidata.html#KnmiStation.readdata"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.read.knmidata.KnmiStation.readdata" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-</div>
-<div class="section" id="module-pastas.read.menydata">
-<span id="pastas-read-menydata-module"></span><h2>pastas.read.menydata module<a class="headerlink" href="#module-pastas.read.menydata" title="Permalink to this headline">¶</a></h2>
-<p>Contains the class MenyData, which represents the data in a Menyanthes file</p>
-<p>Currently only the observations (H) and stresses (IN) are supported. Models (M) are ignored.</p>
-<dl class="class">
-<dt id="pastas.read.menydata.MenyData">
-<em class="property">class </em><code class="descclassname">pastas.read.menydata.</code><code class="descname">MenyData</code><span class="sig-paren">(</span><em>fname</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/read/menydata.html#MenyData"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.read.menydata.MenyData" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
-<p class="rubric">Methods</p>
-<dl class="method">
-<dt id="pastas.read.menydata.MenyData.matlab2datetime">
-<code class="descname">matlab2datetime</code><span class="sig-paren">(</span><em>matlab_datenum</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/read/menydata.html#MenyData.matlab2datetime"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.read.menydata.MenyData.matlab2datetime" title="Permalink to this definition">¶</a></dt>
-<dd><p>Transform a matlab time to a datetime, rounded to seconds</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="pastas.read.menydata.MenyData.roundTime">
-<code class="descname">roundTime</code><span class="sig-paren">(</span><em>date=None</em>, <em>roundTo=1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/read/menydata.html#MenyData.roundTime"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.read.menydata.MenyData.roundTime" title="Permalink to this definition">¶</a></dt>
-<dd><p>Round a datetime object to any time laps in seconds
-dt : datetime.datetime object, default now.
-roundTo : Closest number of seconds to round to, default 1 second.
-Author: Thierry Husson 2012 - Use it as you want but don&#8217;t blame me.</p>
-<p>Not used anymore...</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="pastas.read.menydata.MenyH">
-<em class="property">class </em><code class="descclassname">pastas.read.menydata.</code><code class="descname">MenyH</code><span class="sig-paren">(</span><em>series</em>, <em>name</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/read/menydata.html#MenyH"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.read.menydata.MenyH" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
-</dd></dl>
-
-<dl class="class">
-<dt id="pastas.read.menydata.MenyIN">
-<em class="property">class </em><code class="descclassname">pastas.read.menydata.</code><code class="descname">MenyIN</code><span class="sig-paren">(</span><em>series</em>, <em>name</em>, <em>type</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/read/menydata.html#MenyIN"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.read.menydata.MenyIN" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
-</dd></dl>
-
-</div>
-<div class="section" id="module-pastas.read.read_series">
-<span id="pastas-read-read-series-module"></span><h2>pastas.read.read_series module<a class="headerlink" href="#module-pastas.read.read_series" title="Permalink to this headline">¶</a></h2>
-<p>&#64;author: ruben</p>
-<dl class="class">
-<dt id="pastas.read.read_series.ReadSeries">
-<em class="property">class </em><code class="descclassname">pastas.read.read_series.</code><code class="descname">ReadSeries</code><span class="sig-paren">(</span><em>fname</em>, <em>filetype</em>, <em>variable=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/read/read_series.html#ReadSeries"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.read.read_series.ReadSeries" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
-<p class="rubric">Methods</p>
-<dl class="method">
-<dt id="pastas.read.read_series.ReadSeries.rd2wgs">
-<code class="descname">rd2wgs</code><span class="sig-paren">(</span><em>xy</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/read/read_series.html#ReadSeries.rd2wgs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.read.read_series.ReadSeries.rd2wgs" title="Permalink to this definition">¶</a></dt>
+<dt id="pastas.read.datamodel.DataModel.rd2wgs">
+<code class="descname">rd2wgs</code><span class="sig-paren">(</span><em>x</em>, <em>y</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/read/datamodel.html#DataModel.rd2wgs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.read.datamodel.DataModel.rd2wgs" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -246,6 +151,153 @@ Author: Thierry Husson 2012 - Use it as you want but don&#8217;t blame me.</p>
 </table>
 </dd></dl>
 
+</dd></dl>
+
+</div>
+<div class="section" id="module-pastas.read.dinoloket">
+<span id="pastas-read-dinoloket-module"></span><h2>pastas.read.dinoloket module<a class="headerlink" href="#module-pastas.read.dinoloket" title="Permalink to this headline">¶</a></h2>
+<p>This file contains the classes that can be used to import groundwater level
+data from dinoloket.nl.</p>
+<p>TODO: Get rid of filternummer en opmerking in self.series</p>
+<dl class="class">
+<dt id="pastas.read.dinoloket.DinoGrondwaterstand">
+<em class="property">class </em><code class="descclassname">pastas.read.dinoloket.</code><code class="descname">DinoGrondwaterstand</code><span class="sig-paren">(</span><em>fname</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/read/dinoloket.html#DinoGrondwaterstand"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.read.dinoloket.DinoGrondwaterstand" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="pastas.read.dinoloket.dinodata">
+<em class="property">class </em><code class="descclassname">pastas.read.dinoloket.</code><code class="descname">dinodata</code><span class="sig-paren">(</span><em>fname</em>, <em>variable='Stand_cm_tov_NAP'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/read/dinoloket.html#dinodata"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.read.dinoloket.dinodata" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pastas.read.datamodel.DataModel" title="pastas.read.datamodel.DataModel"><code class="xref py py-class docutils literal"><span class="pre">pastas.read.datamodel.DataModel</span></code></a></p>
+<p class="rubric">Methods</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-pastas.read.knmi">
+<span id="pastas-read-knmi-module"></span><h2>pastas.read.knmi module<a class="headerlink" href="#module-pastas.read.knmi" title="Permalink to this headline">¶</a></h2>
+<p>&#64;author: ruben calje
+Reads daily meteorological data in a file from stations of the KNMI:
+knmi = KnmiStation.fromfile(filename)</p>
+<p>Data can be downloaded for the meteorological stations at:
+<a class="reference external" href="https://www.knmi.nl/nederland-nu/klimatologie/daggegevens">https://www.knmi.nl/nederland-nu/klimatologie/daggegevens</a>
+or
+<a class="reference external" href="http://projects.knmi.nl/klimatologie/daggegevens/selectie.cgi">http://projects.knmi.nl/klimatologie/daggegevens/selectie.cgi</a></p>
+<p>For the rainfall stations data is available at:
+<a class="reference external" href="https://www.knmi.nl/nederland-nu/klimatologie/monv/reeksen">https://www.knmi.nl/nederland-nu/klimatologie/monv/reeksen</a></p>
+<p>Also, data from the meteorological stations can be downloaded directly, for example with
+knmi = KnmiStation(stns=260, start=datetime(1970, 1, 1), end=datetime(1971, 1, 1))  # 260 = de bilt
+knmi.download()
+For now the direct download only works for meteorological stations and daily data (so no rainfall stations or hourly data)</p>
+<dl class="class">
+<dt id="pastas.read.knmi.KnmiStation">
+<em class="property">class </em><code class="descclassname">pastas.read.knmi.</code><code class="descname">KnmiStation</code><span class="sig-paren">(</span><em>start=None</em>, <em>end=None</em>, <em>inseason=False</em>, <em>vars='ALL'</em>, <em>stns='260'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/read/knmi.html#KnmiStation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.read.knmi.KnmiStation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p class="rubric">Methods</p>
+<dl class="method">
+<dt id="pastas.read.knmi.KnmiStation.download">
+<code class="descname">download</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/read/knmi.html#KnmiStation.download"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.read.knmi.KnmiStation.download" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="pastas.read.knmi.KnmiStation.fromfile">
+<em class="property">classmethod </em><code class="descname">fromfile</code><span class="sig-paren">(</span><em>fname</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/read/knmi.html#KnmiStation.fromfile"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.read.knmi.KnmiStation.fromfile" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pastas.read.knmi.KnmiStation.readdata">
+<code class="descname">readdata</code><span class="sig-paren">(</span><em>f</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/read/knmi.html#KnmiStation.readdata"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.read.knmi.KnmiStation.readdata" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pastas.read.knmi.knmidata">
+<em class="property">class </em><code class="descclassname">pastas.read.knmi.</code><code class="descname">knmidata</code><span class="sig-paren">(</span><em>fname</em>, <em>variable='RD'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/read/knmi.html#knmidata"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.read.knmi.knmidata" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pastas.read.datamodel.DataModel" title="pastas.read.datamodel.DataModel"><code class="xref py py-class docutils literal"><span class="pre">pastas.read.datamodel.DataModel</span></code></a></p>
+<p class="rubric">Methods</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-pastas.read.menyanthes">
+<span id="pastas-read-menyanthes-module"></span><h2>pastas.read.menyanthes module<a class="headerlink" href="#module-pastas.read.menyanthes" title="Permalink to this headline">¶</a></h2>
+<p>Contains the class MenyData, which represents the data in a Menyanthes file</p>
+<p>Currently only the observations (H) and stresses (IN) and model results are supported.</p>
+<p># Groundwater level and surface water level - meter with respect to a
+# reference level (e.g. NAP, TAW)
+# Precipitation and evaporation - meters(flux summed starting from date of
+# previous data entry)
+# Extraction - cubic meters(flux summed starting from date of previous data
+# entry)</p>
+<p>TODO: menyanthes-files contain a lot of data and a DataModel is not a good
+form to return... this needs some more work</p>
+<dl class="class">
+<dt id="pastas.read.menyanthes.MenyData">
+<em class="property">class </em><code class="descclassname">pastas.read.menyanthes.</code><code class="descname">MenyData</code><span class="sig-paren">(</span><em>fname</em>, <em>data='H'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/read/menyanthes.html#MenyData"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.read.menyanthes.MenyData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p class="rubric">Methods</p>
+<dl class="method">
+<dt id="pastas.read.menyanthes.MenyData.matlab2datetime">
+<code class="descname">matlab2datetime</code><span class="sig-paren">(</span><em>matlab_datenum</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/read/menyanthes.html#MenyData.matlab2datetime"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.read.menyanthes.MenyData.matlab2datetime" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transform a matlab time to a datetime, rounded to seconds</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pastas.read.menyanthes.MenyData.read_file">
+<code class="descname">read_file</code><span class="sig-paren">(</span><em>fname</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/read/menyanthes.html#MenyData.read_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.read.menyanthes.MenyData.read_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is used to read the file.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pastas.read.menyanthes.MenyData.read_h">
+<code class="descname">read_h</code><span class="sig-paren">(</span><em>mat</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/read/menyanthes.html#MenyData.read_h"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.read.menyanthes.MenyData.read_h" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read the dependent variable part.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pastas.read.menyanthes.MenyData.read_in">
+<code class="descname">read_in</code><span class="sig-paren">(</span><em>mat</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/read/menyanthes.html#MenyData.read_in"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.read.menyanthes.MenyData.read_in" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read the input part.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pastas.read.menyanthes.MenyData.read_m">
+<code class="descname">read_m</code><span class="sig-paren">(</span><em>mat</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/read/menyanthes.html#MenyData.read_m"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.read.menyanthes.MenyData.read_m" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read the result part.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="pastas.read.menyanthes.menydata">
+<code class="descclassname">pastas.read.menyanthes.</code><code class="descname">menydata</code><span class="sig-paren">(</span><em>fname</em>, <em>data='all'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pastas/read/menyanthes.html#menydata"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pastas.read.menyanthes.menydata" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method can be used to import a menyanthes project file.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>fname: str</strong></p>
+<blockquote>
+<div><p>Filename and path to a Dino file.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">DataModel: object</p>
+<blockquote class="last">
+<div><p>returns a standard Pastas DataModel object or a list of objects when
+more than one datatype is present.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </div>
@@ -280,7 +332,7 @@ Author: Thierry Husson 2012 - Use it as you want but don&#8217;t blame me.</p>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2017, M. Bakker, R.A. Collenteur, R. Calje, F. Schaars.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.6.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.5.
     </div>
   </body>
 </html>

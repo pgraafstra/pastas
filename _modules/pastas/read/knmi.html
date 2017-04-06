@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pastas.read.knmidata &#8212; PASTAS 0.9 documentation</title>
+    <title>pastas.read.knmi &#8212; PASTAS 0.9 documentation</title>
     
     <link rel="stylesheet" href="../../../_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -17,15 +17,16 @@
         VERSION:     '0.9',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <link rel="top" title="PASTAS 0.9 documentation" href="../../../index.html" />
-    <link rel="up" title="Module code" href="../../index.html" /> 
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
   </head>
   <body role="document">
 <div class="header">
@@ -99,7 +100,7 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <h1>Source code for pastas.read.knmidata</h1><div class="highlight"><pre>
+  <h1>Source code for pastas.read.knmi</h1><div class="highlight"><pre>
 <span></span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">@author: ruben calje</span>
 <span class="sd">Reads daily meteorological data in a file from stations of the KNMI:</span>
@@ -121,12 +122,49 @@
 
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">print_function</span><span class="p">,</span> <span class="n">division</span>
+
 <span class="kn">from</span> <span class="nn">datetime</span> <span class="k">import</span> <span class="n">date</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">pastas.read.datamodel</span> <span class="k">import</span> <span class="n">DataModel</span>
 
 
-<div class="viewcode-block" id="KnmiStation"><a class="viewcode-back" href="../../../pastas.read.html#pastas.read.knmidata.KnmiStation">[docs]</a><span class="k">class</span> <span class="nc">KnmiStation</span><span class="p">:</span>
+<div class="viewcode-block" id="knmidata"><a class="viewcode-back" href="../../../pastas.read.html#pastas.read.knmi.knmidata">[docs]</a><span class="k">class</span> <span class="nc">knmidata</span><span class="p">(</span><span class="n">DataModel</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fname</span><span class="p">,</span> <span class="n">variable</span><span class="o">=</span><span class="s1">&#39;RD&#39;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;This method can be used to import KNMI data.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        fname: str</span>
+<span class="sd">            Filename and path to a Dino file.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        DataModel: object</span>
+<span class="sd">            returns a standard Pastas DataModel object.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">DataModel</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">knmi</span> <span class="o">=</span> <span class="n">KnmiStation</span><span class="o">.</span><span class="n">fromfile</span><span class="p">(</span><span class="n">fname</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">variable</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">knmi</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+            <span class="ne">Warning</span><span class="p">(</span><span class="s2">&quot;variable </span><span class="si">%s</span><span class="s2"> is not in this dataset. Please use one of &quot;</span>
+                    <span class="s2">&quot;the following keys: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">variable</span><span class="p">,</span> <span class="n">knmi</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">series</span> <span class="o">=</span> <span class="n">knmi</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">variable</span><span class="p">]</span>
+            <span class="c1"># get rid of the hours when data is daily</span>
+            <span class="k">if</span> <span class="n">pd</span><span class="o">.</span><span class="n">infer_freq</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">series</span><span class="o">.</span><span class="n">index</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;D&#39;</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">series</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">series</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">normalize</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">knmi</span><span class="o">.</span><span class="n">stations</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">knmi</span><span class="o">.</span><span class="n">stations</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">knmi</span><span class="o">.</span><span class="n">stations</span><span class="p">[</span><span class="s1">&#39;LAT_north&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">knmi</span><span class="o">.</span><span class="n">stations</span><span class="p">[</span><span class="s1">&#39;LON_east&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">metadata</span> <span class="o">=</span> <span class="n">knmi</span><span class="o">.</span><span class="n">stations</span></div>
+
+
+<div class="viewcode-block" id="KnmiStation"><a class="viewcode-back" href="../../../pastas.read.html#pastas.read.knmi.KnmiStation">[docs]</a><span class="k">class</span> <span class="nc">KnmiStation</span><span class="p">:</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">inseason</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="nb">vars</span><span class="o">=</span><span class="s1">&#39;ALL&#39;</span><span class="p">,</span>
                  <span class="n">stns</span><span class="o">=</span><span class="s1">&#39;260&#39;</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">start</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -147,7 +185,7 @@
 
     <span class="c1"># Alternate constructor</span>
     <span class="nd">@classmethod</span>
-<div class="viewcode-block" id="KnmiStation.fromfile"><a class="viewcode-back" href="../../../pastas.read.html#pastas.read.knmidata.KnmiStation.fromfile">[docs]</a>    <span class="k">def</span> <span class="nf">fromfile</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">fname</span><span class="p">):</span>
+<div class="viewcode-block" id="KnmiStation.fromfile"><a class="viewcode-back" href="../../../pastas.read.html#pastas.read.knmi.KnmiStation.fromfile">[docs]</a>    <span class="k">def</span> <span class="nf">fromfile</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">fname</span><span class="p">):</span>
         <span class="bp">self</span> <span class="o">=</span> <span class="n">cls</span><span class="p">()</span>
         <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">readdata</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
@@ -155,7 +193,7 @@
 
         <span class="k">return</span> <span class="bp">self</span></div>
 
-<div class="viewcode-block" id="KnmiStation.download"><a class="viewcode-back" href="../../../pastas.read.html#pastas.read.knmidata.KnmiStation.download">[docs]</a>    <span class="k">def</span> <span class="nf">download</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="KnmiStation.download"><a class="viewcode-back" href="../../../pastas.read.html#pastas.read.knmi.KnmiStation.download">[docs]</a>    <span class="k">def</span> <span class="nf">download</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 
 <span class="sd">        :return:</span>
@@ -204,9 +242,10 @@
         <span class="n">f</span> <span class="o">=</span> <span class="n">StringIO</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">readdata</span><span class="p">(</span><span class="n">f</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="KnmiStation.readdata"><a class="viewcode-back" href="../../../pastas.read.html#pastas.read.knmidata.KnmiStation.readdata">[docs]</a>    <span class="k">def</span> <span class="nf">readdata</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">):</span>
+<div class="viewcode-block" id="KnmiStation.readdata"><a class="viewcode-back" href="../../../pastas.read.html#pastas.read.knmi.KnmiStation.readdata">[docs]</a>    <span class="k">def</span> <span class="nf">readdata</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">):</span>
         <span class="n">isLocations</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="n">line</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+        <span class="n">isMeteo</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;# &#39;</span><span class="p">)</span>
 
         <span class="c1"># Process the header information (Everything &lt; &#39;STN,&#39;)</span>
         <span class="k">while</span> <span class="s1">&#39;STN,&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
@@ -217,8 +256,8 @@
             <span class="c1"># If line is empty, skipline</span>
             <span class="k">if</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
                 <span class="k">pass</span>
-            <span class="c1"># If line contains station info</span>
-            <span class="k">elif</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;STN &#39;</span><span class="p">):</span>
+            <span class="c1"># If line contains station info (can only happen for meteorological stations)</span>
+            <span class="k">elif</span> <span class="n">isMeteo</span> <span class="ow">and</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;STN &#39;</span><span class="p">):</span>
                 <span class="n">isLocations</span> <span class="o">=</span> <span class="kc">True</span>
                 <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
                 <span class="n">titels</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
@@ -279,14 +318,26 @@
 
         <span class="c1"># convert the hours if provided</span>
         <span class="k">if</span> <span class="s1">&#39;HH&#39;</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+            <span class="c1"># hourly data, Hourly division 05 runs from 04.00 UT to 5.00 UT</span>
             <span class="n">data</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">index</span> <span class="o">+</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_timedelta</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;HH&#39;</span><span class="p">],</span> <span class="n">unit</span><span class="o">=</span><span class="s1">&#39;h&#39;</span><span class="p">)</span>
             <span class="n">data</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;HH&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># daily data</span>
+            <span class="k">if</span> <span class="s1">&#39;RD&#39;</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+                <span class="c1"># daily precipitation amount in 0.1 mm over the period 08.00 preceding day - 08.00 UTC present day</span>
+                <span class="n">data</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">index</span> <span class="o">+</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_timedelta</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="s1">&#39;h&#39;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># add a full day for meteorologiscal data, so that the timestamp is at the end of the period that the data represenets</span>
+                <span class="n">data</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">index</span> <span class="o">+</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_timedelta</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="s1">&#39;d&#39;</span><span class="p">)</span>
+
+        <span class="c1"># from UT to UT+1 (standard-time in the Netherlands)</span>
+        <span class="n">data</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">index</span> <span class="o">+</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_timedelta</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="s1">&#39;h&#39;</span><span class="p">)</span>
 
         <span class="c1"># Delete empty columns</span>
         <span class="k">if</span> <span class="s1">&#39;&#39;</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
             <span class="n">data</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-        <span class="c1"># %% van pas de eenheid aan van de metingen</span>
+        <span class="c1"># Adjust the unit of the measurements</span>
         <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">variables</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="c1"># test if key existst in data</span>
             <span class="k">if</span> <span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
@@ -298,38 +349,34 @@
                 <span class="k">else</span><span class="p">:</span>
                     <span class="k">raise</span> <span class="ne">NameError</span><span class="p">(</span><span class="n">key</span> <span class="o">+</span> <span class="s1">&#39; does not exist in data&#39;</span><span class="p">)</span>
             <span class="k">if</span> <span class="s1">&#39; (-1 for &lt;0.05 mm)&#39;</span> <span class="ow">in</span> <span class="n">value</span> <span class="ow">or</span> <span class="s1">&#39; (-1 voor &lt;0.05 mm)&#39;</span> <span class="ow">in</span> <span class="n">value</span><span class="p">:</span>
-                <span class="c1"># erin=data[key]==-1</span>
-                <span class="c1"># data[key][erin]=data[key][erin]=0.25 # eenheid is nog 0.1 mm</span>
-                <span class="c1"># data[key][erin]=0.25 # eenheid is nog 0.1 mm</span>
-                <span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.25</span>
+                <span class="c1"># set 0.025 mm where data == -1</span>
+                <span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.25</span>  <span class="c1"># unit is still 0.1 mm</span>
                 <span class="n">value</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39; (-1 for &lt;0.05 mm)&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
                 <span class="n">value</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39; (-1 voor &lt;0.05 mm)&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
             <span class="k">if</span> <span class="s1">&#39;0.1 &#39;</span> <span class="ow">in</span> <span class="n">value</span><span class="p">:</span>
-                <span class="c1"># reken om van 0.1 naar 1</span>
+                <span class="c1"># transform 0.1 to 1</span>
                 <span class="n">data</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">*</span> <span class="mf">0.1</span>
                 <span class="n">value</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;0.1 &#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
             <span class="k">if</span> <span class="s1">&#39; tiende &#39;</span> <span class="ow">in</span> <span class="n">value</span><span class="p">:</span>
-                <span class="c1"># reken om van 0.1 naar 1</span>
+                <span class="c1"># transform 0.1 to 1</span>
                 <span class="n">data</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">*</span> <span class="mf">0.1</span>
                 <span class="n">value</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39; tiende &#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">)</span>
             <span class="k">if</span> <span class="s1">&#39; mm&#39;</span> <span class="ow">in</span> <span class="n">value</span><span class="p">:</span>
-                <span class="c1"># reken mm om naar m</span>
+                <span class="c1"># transform mm to m</span>
                 <span class="n">data</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">*</span> <span class="mf">0.001</span>
                 <span class="n">value</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39; mm&#39;</span><span class="p">,</span> <span class="s1">&#39; m&#39;</span><span class="p">)</span>
             <span class="k">if</span> <span class="s1">&#39; millimeters&#39;</span> <span class="ow">in</span> <span class="n">value</span><span class="p">:</span>
-                <span class="c1"># reken mm om naar m</span>
+                <span class="c1"># transform mm to m</span>
                 <span class="n">data</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">*</span> <span class="mf">0.001</span>
                 <span class="n">value</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39; millimeters&#39;</span><span class="p">,</span> <span class="s1">&#39; m&#39;</span><span class="p">)</span>
             <span class="k">if</span> <span class="s1">&#39;(in percents)&#39;</span> <span class="ow">in</span> <span class="n">value</span><span class="p">:</span>
-                <span class="c1"># reken procent om naar deel</span>
-                <span class="c1"># data[key]=data[key]*0.01</span>
-                <span class="c1"># reken (nog) niet om</span>
+                <span class="c1"># do not adjust (yet)</span>
                 <span class="k">pass</span>
             <span class="k">if</span> <span class="s1">&#39;hPa&#39;</span> <span class="ow">in</span> <span class="n">value</span><span class="p">:</span>
-                <span class="c1"># reken (nog) niet om</span>
+                <span class="c1"># do not adjust (yet)</span>
                 <span class="k">pass</span>
             <span class="k">if</span> <span class="s1">&#39;J/cm2&#39;</span> <span class="ow">in</span> <span class="n">value</span><span class="p">:</span>
-                <span class="c1"># reken (nog) niet om</span>
+                <span class="c1"># do not adjust (yet)</span>
                 <span class="k">pass</span>
             <span class="c1"># Store new variable</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
@@ -366,7 +413,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2017, M. Bakker, R.A. Collenteur, R. Calje, F. Schaars.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.6.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.5.
     </div>
   </body>
 </html>
