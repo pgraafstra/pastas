@@ -1,0 +1,4 @@
+root: ./doc/
+
+structure:
+  readme: index.rst
