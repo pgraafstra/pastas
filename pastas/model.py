@@ -729,12 +729,12 @@ class Model:
             # first copy the existing parameters, so we can set it back later
             parameters = self.parameters.copy()
             # fix all other parameters to the optimal value
-            for par in self.parameters.index:
-                self.parameters.loc[par, "initial"] = self.parameters.loc[par, 'optimal']
-                self.parameters.loc[par, "vary"] = False
+            self.parameters.initial = self.parameters.optimal
+            self.parameters.vary = False
+            # except for noise_alpha
             self.parameters.loc["noise_alpha", "vary"] = True
-            success, optimal, stderr = self.fit.solve(noise=noise, weights=weights,
-                                                      **kwargs)
+            _, optimal, _ = self.fit.solve(noise=noise, weights=weights,
+                                           **kwargs)
             mask = self.parameters.vary
             self.parameters.loc[mask,'optimal'] = optimal[mask]
             self.parameters.loc[~mask,'vary'] = parameters.loc[~mask,'vary']
@@ -744,8 +744,8 @@ class Model:
             self.parameters.initial = self.parameters.optimal
             if 'max_nfev' in kwargs:
                 kwargs.pop('max_nfev')
-            success, optimal, stderr = self.fit.solve(noise=noise, weights=weights,
-                                                      max_nfev=1, **kwargs)
+            _, _, stderr = self.fit.solve(noise=noise, weights=weights,
+                                          max_nfev=1, **kwargs)
             # parameter values do not change, so we do not set optimal values
             # we do get new values for stderr
             self.parameters.stderr = stderr
