@@ -723,32 +723,35 @@ class Model:
         self.parameters.stderr = stderr
         
         if noise and fit_noise_separate:
-            # fit noise_alpha in a seperate solve-iteration
             nfev = self.fit.nfev
             
+            # fit noise_alpha in a seperate solve-iteration
+            # first copy the existing parameters, so we can set it back later
             parameters = self.parameters.copy()
+            # fix all other parameters to the optimal value
             for par in self.parameters.index:
                 self.parameters.loc[par, "initial"] = self.parameters.loc[par, 'optimal']
                 self.parameters.loc[par, "vary"] = False
             self.parameters.loc["noise_alpha", "vary"] = True
             success, optimal, stderr = self.fit.solve(noise=noise, weights=weights,
                                                       **kwargs)
-            if not success:
-                self.logger.warning("Model parameters could not be estimated "
-                                    "well.")
             mask = self.parameters.vary
-            self.parameters.loc[mask,'initial'] = optimal[mask]
+            self.parameters.loc[mask,'optimal'] = optimal[mask]
             self.parameters.loc[~mask,'vary'] = parameters.loc[~mask,'vary']
             nfev = nfev + self.fit.nfev
             
             # then calculate the jacobian once more with all parameters active
+            self.parameters.initial = self.parameters.optimal
             if 'max_nfev' in kwargs:
                 kwargs.pop('max_nfev')
             success, optimal, stderr = self.fit.solve(noise=noise, weights=weights,
                                                       max_nfev=1, **kwargs)
-            self.parameters.optimal = optimal
+            # parameter values do not change, so we do not set optimal values
+            # we do get new values for stderr
             self.parameters.stderr = stderr
+            # set the initial vailues back to their original values
             self.parameters.initial = parameters.initial
+            # and finally we set the nfev to the total of the three iterations
             self.fit.nfev = nfev + 1
 
         if report:
