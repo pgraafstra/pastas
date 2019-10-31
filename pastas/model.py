@@ -630,7 +630,7 @@ class Model:
 
     def solve(self, tmin=None, tmax=None, freq=None, warmup=None, noise=True,
               solver=None, report=True, initial=True, weights=None,
-              fit_constant=True, **kwargs):
+              fit_constant=True, fit_noise_separate=False, **kwargs):
         """Method to solve the time series model.
 
         Parameters
@@ -703,6 +703,9 @@ class Model:
 
         self.settings["solver"] = self.fit._name
 
+        if noise and fit_noise_separate:
+            self.parameters.loc["noise_alpha", "vary"] = False
+
         # Solve model
         success, optimal, stderr = self.fit.solve(noise=noise, weights=weights,
                                                   **kwargs)
@@ -718,6 +721,35 @@ class Model:
 
         self.parameters.optimal = optimal
         self.parameters.stderr = stderr
+        
+        if noise and fit_noise_separate:
+            # fit noise_alpha in a seperate solve-iteration
+            nfev = self.fit.nfev
+            
+            parameters = self.parameters.copy()
+            for par in self.parameters.index:
+                self.parameters.loc[par, "initial"] = self.parameters.loc[par, 'optimal']
+                self.parameters.loc[par, "vary"] = False
+            self.parameters.loc["noise_alpha", "vary"] = True
+            success, optimal, stderr = self.fit.solve(noise=noise, weights=weights,
+                                                      **kwargs)
+            if not success:
+                self.logger.warning("Model parameters could not be estimated "
+                                    "well.")
+            mask = self.parameters.vary
+            self.parameters.loc[mask,'initial'] = optimal[mask]
+            self.parameters.loc[~mask,'vary'] = parameters.loc[~mask,'vary']
+            nfev = nfev + self.fit.nfev
+            
+            # then calculate the jacobian once more with all parameters active
+            if 'max_nfev' in kwargs:
+                kwargs.pop('max_nfev')
+            success, optimal, stderr = self.fit.solve(noise=noise, weights=weights,
+                                                      max_nfev=1, **kwargs)
+            self.parameters.optimal = optimal
+            self.parameters.stderr = stderr
+            self.parameters.initial = parameters.initial
+            self.fit.nfev = nfev + 1
 
         if report:
             print(self.fit_report())
