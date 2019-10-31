@@ -703,8 +703,14 @@ class Model:
 
         self.settings["solver"] = self.fit._name
 
-        if noise and fit_noise_separate:
+        if fit_noise_separate and not noise :
+            msg = ('fit_noise_separate=True and noise=False are conflicting. '
+                  'Setting noise to True')
+            self.logger.warning(msg)
+
+        if fit_noise_separate:
             self.parameters.loc["noise_alpha", "vary"] = False
+            noise = False
 
         # Solve model
         success, optimal, stderr = self.fit.solve(noise=noise, weights=weights,
@@ -722,7 +728,7 @@ class Model:
         self.parameters.optimal = optimal
         self.parameters.stderr = stderr
         
-        if noise and fit_noise_separate:
+        if fit_noise_separate:
             nfev = self.fit.nfev
             
             # fit noise_alpha in a seperate solve-iteration
@@ -733,7 +739,7 @@ class Model:
             self.parameters.vary = False
             # except for noise_alpha
             self.parameters.loc["noise_alpha", "vary"] = True
-            _, optimal, _ = self.fit.solve(noise=noise, weights=weights,
+            _, optimal, _ = self.fit.solve(noise=True, weights=weights,
                                            **kwargs)
             mask = self.parameters.vary
             self.parameters.loc[mask,'optimal'] = optimal[mask]
@@ -744,7 +750,7 @@ class Model:
             self.parameters.initial = self.parameters.optimal
             if 'max_nfev' in kwargs:
                 kwargs.pop('max_nfev')
-            _, _, stderr = self.fit.solve(noise=noise, weights=weights,
+            _, _, stderr = self.fit.solve(noise=True, weights=weights,
                                           max_nfev=1, **kwargs)
             # parameter values do not change, so we do not set optimal values
             # we do get new values for stderr
